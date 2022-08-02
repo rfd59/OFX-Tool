@@ -1,8 +1,6 @@
 using RFD.OFXTool.Library.Core;
 using RFD.OFXTool.Library.Entities;
-using System;
 using System.Globalization;
-using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;

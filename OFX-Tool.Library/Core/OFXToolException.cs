@@ -1,5 +1,3 @@
-using System;
-
 namespace RFD.OFXTool.Library.Core
 {
     class OFXToolException : Exception

@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-
 namespace RFD.OFXTool.Library.Entities
 {
     public class Extract

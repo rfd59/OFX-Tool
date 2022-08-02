@@ -1,5 +1,3 @@
-using System;
-
 namespace RFD.OFXTool.Library.Entities
 {
     public class HeaderExtract
