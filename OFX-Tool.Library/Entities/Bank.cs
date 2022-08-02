@@ -1,4 +1,4 @@
-namespaceRFD.OFXTool.Library.Entities
+namespace RFD.OFXTool.Library.Entities
 {
     public class Bank
     {
