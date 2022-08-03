@@ -26,4 +26,10 @@
     <ProjectReference Include="..\OFX-Tool.Library\OFX-Tool.Library.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="TestFiles\UnitTest1.ofx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

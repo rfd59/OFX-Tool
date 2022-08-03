@@ -50,7 +50,7 @@ jobs:
           fail-on-error: true
 
       # https://samlearnsazure.blog/2021/01/05/code-coverage-in-github-with-net-core/
-      - name: Publish coverage report to coveralls.io   
+      - name: Coverage Report
         uses: coverallsapp/github-action@master   
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }} 
