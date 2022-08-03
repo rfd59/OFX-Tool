@@ -49,5 +49,15 @@ namespace RFD.OFXTool.Test.Core
             }
         }
 
+        [TestMethod]
+        public void XmlExist()
+        {
+            var xml = new ExportToXML("TestFiles/UnitTest1.ofx");
+            var writed = File.GetLastWriteTime(xml.XmlFile);
+            
+            xml = new ExportToXML("TestFiles/UnitTest1.ofx");
+            Assert.IsFalse(writed.Equals(File.GetLastWriteTime(xml.XmlFile)));
+        }
+
     }
 }
