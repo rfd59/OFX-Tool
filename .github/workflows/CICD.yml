@@ -37,8 +37,19 @@ jobs:
         run: dotnet build -c Release --no-restore
 
       - name: Test
-        run: dotnet test -c Release --no-build --verbosity normal --filter "Category!=LongRunning" /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=lcov
+        run: dotnet test -c Release --no-build --verbosity normal --filter "Category!=LongRunning" /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=lcov --logger "trx;LogFileName=test-results.trx" || true
 
+      # https://octopus.com/blog/githubactions-running-unit-tests
+      - name: Test Report
+        uses: dorny/test-reporter@v1
+        if: always()
+        with:
+          name: DotNET Tests
+          path: "**/test-results.trx"                            
+          reporter: dotnet-trx
+          fail-on-error: true
+
+      # https://samlearnsazure.blog/2021/01/05/code-coverage-in-github-with-net-core/
       - name: Publish coverage report to coveralls.io   
         uses: coverallsapp/github-action@master   
         with:
