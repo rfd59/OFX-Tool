@@ -31,7 +31,7 @@ namespace RFD.OFXTool.Test.Core
 
         [TestMethod]
         [DataRow("TestFiles/UnitTest1.ofx")]
-        [DataRow("TestFiles/UnitTest2.ofx")]
+        //[DataRow("TestFiles/UnitTest2.ofx")]
         public void ExportToXML(string ofxFile)
         {
             var xml = new ExportToXml(ofxFile);
