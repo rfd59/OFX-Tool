@@ -23,13 +23,13 @@ namespace RFD.OFXTool.Test.Core
         [ExpectedException(typeof(ArgumentException))]
         public void InvalidXmlName()
         {
-            new ExportToXML("TestFiles\\UnitTest1.ofx", "InvalidXmlName.txt");
+            new ExportToXML("TestFiles/UnitTest1.ofx", "InvalidXmlName.txt");
         }
 
         [TestMethod]
         public void ExportToXML()
         {
-            var xml = new ExportToXML("TestFiles\\UnitTest1.ofx");
+            var xml = new ExportToXML("TestFiles/UnitTest1.ofx");
 
         }
     }
