@@ -25,5 +25,12 @@ namespace RFD.OFXTool.Test.Core
         {
             new ExportToXML("TestFiles\\UnitTest1.ofx", "InvalidXmlName.txt");
         }
+
+        [TestMethod]
+        public void ExportToXML()
+        {
+            var xml = new ExportToXML("TestFiles\\UnitTest1.ofx");
+
+        }
     }
 }
