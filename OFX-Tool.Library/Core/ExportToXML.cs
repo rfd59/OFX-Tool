@@ -66,11 +66,6 @@ namespace RFD.OFXTool.Library.Core
             int level = 0;
             string line;
 
-            if (!File.Exists(ofxSourceFile))
-            {
-                throw new FileNotFoundException("OFX source file not found: " + ofxSourceFile);
-            }
-
             using (var sr = new StreamReader(ofxSourceFile, Encoding.Default))
             {
                 while ((line = sr.ReadLine()) != null)
