@@ -27,7 +27,7 @@ namespace RFD.OFXTool.Library
         public Extract GenerateExtract(string ofxSourceFile)
         {
             // Translating to XML file
-            var xml = new ExportToXML(ofxSourceFile);
+            var xml = new ExportToXml(ofxSourceFile);
 
             var elementoSendoLido = "";
             Transaction transacaoAtual = null;

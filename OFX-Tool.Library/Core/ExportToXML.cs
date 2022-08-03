@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace RFD.OFXTool.Library.Core
 {
-    public class ExportToXML
+    public class ExportToXml
     {
         public string XmlFile { get; }
         public string OfxFile { get; }
 
-        public ExportToXML(string ofxSourceFile): this(ofxSourceFile, ofxSourceFile + ".xml")
+        public ExportToXml(string ofxSourceFile): this(ofxSourceFile, ofxSourceFile + ".xml")
         { }
 
         /// <summary>
@@ -19,7 +19,7 @@ namespace RFD.OFXTool.Library.Core
         /// </summary>
         /// <param name="ofxSourceFile">Path of OFX source file</param>
         /// <param name="xmlNewFile">Path of the XML file, internally generated.</param>
-        public ExportToXML(string ofxSourceFile, string xmlNewFile)
+        public ExportToXml(string ofxSourceFile, string xmlNewFile)
         {
             OfxFile = ofxSourceFile;
             XmlFile = xmlNewFile;

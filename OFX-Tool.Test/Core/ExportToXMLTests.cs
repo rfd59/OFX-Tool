@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Schema;
@@ -12,20 +13,20 @@ using System.Xml.Schema;
 namespace RFD.OFXTool.Test.Core
 {
     [TestClass]
-    public class ExportToXMLTests
+    public class ExportToXmlTests
     {
         [TestMethod]
         [ExpectedException(typeof(FileNotFoundException))]
         public void FileNotFound()
         {
-            new ExportToXML("FileNotFound.ofx");
+            new ExportToXml("FileNotFound.ofx");
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void InvalidXmlName()
         {
-            new ExportToXML("TestFiles/UnitTest1.ofx", "InvalidXmlName.txt");
+            new ExportToXml("TestFiles/UnitTest1.ofx", "InvalidXmlName.txt");
         }
 
         [TestMethod]
@@ -33,7 +34,7 @@ namespace RFD.OFXTool.Test.Core
         [DataRow("TestFiles/UnitTest2.ofx")]
         public void ExportToXML(string ofxFile)
         {
-            var xml = new ExportToXML(ofxFile);
+            var xml = new ExportToXml(ofxFile);
             Assert.IsTrue(File.Exists(xml.XmlFile));
 
             var file = xml.XmlFile;
@@ -52,10 +53,13 @@ namespace RFD.OFXTool.Test.Core
         [TestMethod]
         public void XmlExist()
         {
-            var xml = new ExportToXML("TestFiles/UnitTest1.ofx");
+            var xml = new ExportToXml("TestFiles/UnitTest1.ofx");
             var writed = File.GetLastWriteTime(xml.XmlFile);
-            
-            xml = new ExportToXML("TestFiles/UnitTest1.ofx");
+
+            // To be sure that not be in the same second
+            Thread.Sleep(1000);
+
+            xml = new ExportToXml("TestFiles/UnitTest1.ofx");
             Assert.IsFalse(writed.Equals(File.GetLastWriteTime(xml.XmlFile)));
         }
 
