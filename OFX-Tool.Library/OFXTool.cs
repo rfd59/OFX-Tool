@@ -1,7 +1,6 @@
 using RFD.OFXTool.Library.Core;
 using RFD.OFXTool.Library.Entities;
 using System.Globalization;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
 
@@ -119,7 +118,7 @@ namespace RFD.OFXTool.Library
             return extract;
         }
 
-       
+
 
 
         /// <summary>

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 
 namespace RFD.OFXTool.Library.Core
 {
@@ -11,7 +7,7 @@ namespace RFD.OFXTool.Library.Core
         public string XmlFile { get; }
         public string OfxFile { get; }
 
-        public ExportToXml(string ofxSourceFile): this(ofxSourceFile, ofxSourceFile + ".xml")
+        public ExportToXml(string ofxSourceFile) : this(ofxSourceFile, ofxSourceFile + ".xml")
         { }
 
         /// <summary>
