@@ -36,6 +36,9 @@ jobs:
       - name: Build
         run: dotnet build -c Release --no-restore
 
+      - name: Degug
+        run: pwd && ls -al
+
       - name: Test
         run: dotnet test -c Release --no-build --verbosity normal --filter "Category!=LongRunning" /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=lcov --logger "trx;LogFileName=test-results.trx" || true
 
