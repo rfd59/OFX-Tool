@@ -1,6 +1,6 @@
 namespace RFD.OFXTool.Library.Core
 {
-    class OFXToolException : Exception
+    public class OFXToolException : Exception
     {
         public OFXToolException() : base()
         {
