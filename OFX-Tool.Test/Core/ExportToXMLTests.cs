@@ -21,15 +21,16 @@ namespace RFD.OFXTool.Test.Core
         [ExpectedException(typeof(ArgumentException))]
         public void InvalidXmlName()
         {
-            new ExportToXml("TestFiles/UnitTest1.ofx", "InvalidXmlName.txt");
+            new ExportToXml("TestFiles/ExportToXmlTest1.ofx", "InvalidXmlName.txt");
         }
 
         [TestMethod]
-        [DataRow("TestFiles/UnitTest1.ofx")]
+        [DataRow("TestFiles/ExportToXmlTest1.ofx")]
         //[DataRow("TestFiles/UnitTest2.ofx")]
         public void ExportToXML(string ofxFile)
         {
             var xml = new ExportToXml(ofxFile);
+            Assert.AreEqual(ofxFile, xml.OfxFile);
             Assert.IsTrue(File.Exists(xml.XmlFile));
 
             var file = xml.XmlFile;
@@ -48,13 +49,13 @@ namespace RFD.OFXTool.Test.Core
         [TestMethod]
         public void XmlExist()
         {
-            var xml = new ExportToXml("TestFiles/UnitTest1.ofx");
+            var xml = new ExportToXml("TestFiles/ExportToXmlTest1.ofx");
             var writed = File.GetLastWriteTime(xml.XmlFile);
 
             // To be sure that not be in the same second
             Thread.Sleep(1000);
 
-            xml = new ExportToXml("TestFiles/UnitTest1.ofx");
+            xml = new ExportToXml("TestFiles/ExportToXmlTest1.ofx");
             Assert.IsFalse(writed.Equals(File.GetLastWriteTime(xml.XmlFile)));
         }
 

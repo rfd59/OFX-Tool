@@ -13,7 +13,7 @@ namespace RFD.OFXTool.Library.Entities.Tests
             Assert.IsFalse(entity.Equals(null));
             Assert.IsFalse(entity.Equals(new Object()));
             Assert.AreEqual(entity, new Status());
-            Assert.AreNotEqual(entity, new Status() { Code = "123" });
+            Assert.AreNotEqual(entity, new Status() { Message = "a message..." });
         }
 
         [TestMethod()]

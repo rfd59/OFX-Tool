@@ -28,11 +28,12 @@
             {
                 Status e = (Status)obj;
                 return Entity.PropertyEquality(e.Code, Code) &&
-                    Entity.PropertyEquality(e.Severity, Severity);
+                    Entity.PropertyEquality(e.Severity, Severity) &&
+                    Entity.PropertyEquality(e.Message, Message);
             }
         }
 
         //Serves as the default hash function
-        public override int GetHashCode() => new { Code, Severity }.GetHashCode();
+        public override int GetHashCode() => new { Code, Severity, Message }.GetHashCode();
     }
 }

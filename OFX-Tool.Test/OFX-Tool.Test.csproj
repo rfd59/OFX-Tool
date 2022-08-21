@@ -33,10 +33,10 @@
     <None Update="TestFiles\LoadFromXmlTest1.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestFiles\UnitTest2.ofx">
+    <None Update="TestFiles\ExportToXmlTest2.ofx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestFiles\UnitTest1.ofx">
+    <None Update="TestFiles\ExportToXmlTest1.ofx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
