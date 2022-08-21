@@ -1,6 +1,6 @@
-﻿using RFD.OFXTool.Library.Ofx.Signon;
+﻿using RFD.OFXTool.Library.Entities.Signon;
 
-namespace RFD.OFXTool.Library.Ofx
+namespace RFD.OFXTool.Library.Entities
 {
     public class SignonResponseMessageSetV1
     {

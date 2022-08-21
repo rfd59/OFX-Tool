@@ -1,6 +1,6 @@
-﻿using RFD.OFXTool.Library.Ofx.Bank;
+﻿using RFD.OFXTool.Library.Entities.Bank;
 
-namespace RFD.OFXTool.Library.Ofx
+namespace RFD.OFXTool.Library.Entities
 {
     public class BankResponseMessageSetV1
     {

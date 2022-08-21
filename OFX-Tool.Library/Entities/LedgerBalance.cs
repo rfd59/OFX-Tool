@@ -1,10 +1,10 @@
-﻿namespace RFD.OFXTool.Library.Ofx
+﻿namespace RFD.OFXTool.Library.Entities
 {
-    public class AvailableBalance
+    public class LedgerBalance
     {
         //
         // Résumé :
-        //     Gets or sets the available balance amount.
+        //     Gets or sets the ledger balance amount.
         public string? BalanceAmount { get; set; }
         //
         // Résumé :
@@ -21,7 +21,7 @@
             }
             else
             {
-                AvailableBalance e = (AvailableBalance)obj;
+                LedgerBalance e = (LedgerBalance)obj;
                 return Entity.PropertyEquality(e.BalanceAmount, BalanceAmount) &&
                     Entity.PropertyEquality(e.DateAsOf, DateAsOf);
             }

@@ -1,4 +1,4 @@
-﻿namespace RFD.OFXTool.Library.Ofx.Signon
+﻿namespace RFD.OFXTool.Library.Entities.Signon
 {
     public class SignonResponse
     {

@@ -1,4 +1,4 @@
-﻿namespace RFD.OFXTool.Library.Ofx
+﻿namespace RFD.OFXTool.Library.Entities
 {
     public abstract class AbstractResponse
     {

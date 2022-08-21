@@ -4,6 +4,6 @@ namespace RFD.OFXTool.Library
 {
     public interface IOFXTool
     {
-        Extract GenerateExtract(string ofxSourceFile);
+        ResponseDocument Extract(string ofxSourceFile);
     }
 }

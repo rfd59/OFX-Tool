@@ -1,5 +1,5 @@
 ﻿using RFD.OFXTool.Library.Core.Extract;
-using RFD.OFXTool.Library.Ofx;
+using RFD.OFXTool.Library.Entities;
 using System.Xml;
 
 namespace RFD.OFXTool.Library.Core

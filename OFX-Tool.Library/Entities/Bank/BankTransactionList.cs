@@ -1,4 +1,4 @@
-﻿namespace RFD.OFXTool.Library.Ofx.Bank
+﻿namespace RFD.OFXTool.Library.Entities.Bank
 {
     public class BankTransactionList
     {

@@ -1,4 +1,4 @@
-﻿namespace RFD.OFXTool.Library.Ofx.Bank
+﻿namespace RFD.OFXTool.Library.Entities.Bank
 {
     // OFX uses the Banking Account aggregates to identify an account at an FI. The
     // aggregates contain enough information to uniquely identify an account for the

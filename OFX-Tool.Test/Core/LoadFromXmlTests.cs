@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using RFD.OFXTool.Library.Ofx;
-using RFD.OFXTool.Library.Ofx.Bank;
-using RFD.OFXTool.Library.Ofx.Signon;
+using RFD.OFXTool.Library.Entities;
+using RFD.OFXTool.Library.Entities.Bank;
+using RFD.OFXTool.Library.Entities.Signon;
 using System.Collections.Generic;
 
 namespace RFD.OFXTool.Library.Core.Tests
