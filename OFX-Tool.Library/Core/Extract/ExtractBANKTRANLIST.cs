@@ -1,11 +1,4 @@
-﻿using RFD.OFXTool.Library.Ofx;
-using RFD.OFXTool.Library.Ofx.Bank;
-using RFD.OFXTool.Library.Ofx.Signon;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using RFD.OFXTool.Library.Ofx.Bank;
 using System.Xml;
 
 namespace RFD.OFXTool.Library.Core.Extract

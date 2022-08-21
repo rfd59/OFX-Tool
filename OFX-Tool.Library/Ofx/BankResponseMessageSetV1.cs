@@ -17,7 +17,7 @@ namespace RFD.OFXTool.Library.Ofx
             else
             {
                 BankResponseMessageSetV1 e = (BankResponseMessageSetV1)obj;
-                
+
                 return Entity.PropertyEquality(e.StatementTransactionResponses, StatementTransactionResponses);
             }
         }
