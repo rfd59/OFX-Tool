@@ -120,10 +120,10 @@ namespace RFD.OFXTool.Library.Core
         {
             var returnFinal = string.Empty;
 
-            if ((content.IndexOf("<") != -1) && (content.IndexOf(">") != -1))
+            if ((content.IndexOf("<", StringComparison.InvariantCulture) != -1) && (content.IndexOf(">", StringComparison.InvariantCulture) != -1))
             {
-                int position1 = content.IndexOf("<");
-                int position2 = content.IndexOf(">");
+                int position1 = content.IndexOf("<", StringComparison.InvariantCulture);
+                int position2 = content.IndexOf(">", StringComparison.InvariantCulture);
                 if ((position2 - position1) > 2)
                 {
                     returnFinal = content.Substring(position1, (position2 - position1) + 1);

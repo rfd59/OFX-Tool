@@ -51,6 +51,8 @@ namespace RFD.OFXTool.Library.Core.Extract
                         case "MEMO":
                             Element.Memo = xmlReader.Value;
                             break;
+                        default:
+                            throw new InvalidOperationException($"Unexpected value! [{myField}]");
                     }
                 }
             }

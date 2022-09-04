@@ -57,6 +57,8 @@ namespace RFD.OFXTool.Library.Core.Extract
                         case "CURDEF":
                             Element.Currency = (CurrencyEnum)Enum.Parse(typeof(CurrencyEnum), xmlReader.Value);
                             break;
+                        default:
+                            throw new InvalidOperationException($"Unexpected value! [{myField}]");
                     }
                 }
             }

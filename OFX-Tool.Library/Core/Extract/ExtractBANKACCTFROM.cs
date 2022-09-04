@@ -42,6 +42,8 @@ namespace RFD.OFXTool.Library.Core.Extract
                         case "ACCTTYPE":
                             Element.AccountType = (AccountEnum)Enum.Parse(typeof(AccountEnum), xmlReader.Value);
                             break;
+                        default:
+                            throw new InvalidOperationException($"Unexpected value! [{myField}]");
                     }
                 }
             }

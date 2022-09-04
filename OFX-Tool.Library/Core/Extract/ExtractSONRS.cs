@@ -42,6 +42,8 @@ namespace RFD.OFXTool.Library.Core.Extract
                         case "LANGUAGE":
                             Element.Language = (LanguageEnum)Enum.Parse(typeof(LanguageEnum), xmlReader.Value);
                             break;
+                        default:
+                            throw new InvalidOperationException($"Unexpected value! [{myField}]");
                     }
                 }
             }

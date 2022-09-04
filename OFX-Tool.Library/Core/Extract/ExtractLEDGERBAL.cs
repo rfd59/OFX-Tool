@@ -35,6 +35,8 @@ namespace RFD.OFXTool.Library.Core.Extract
                         case "DTASOF":
                             Element.DateAsOf = xmlReader.Value;
                             break;
+                        default:
+                            throw new InvalidOperationException($"Unexpected value! [{myField}]");
                     }
                 }
             }

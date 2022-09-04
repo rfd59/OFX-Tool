@@ -35,6 +35,8 @@ namespace RFD.OFXTool.Library.Core.Extract
                         case "SEVERITY":
                             Element.Severity = (SeverityEnum)Enum.Parse(typeof(SeverityEnum), xmlReader.Value);
                             break;
+                        default:
+                            throw new InvalidOperationException($"Unexpected value! [{myField}]");
                     }
                 }
             }
