@@ -14,11 +14,13 @@ This project provides a .Net 6.0 library to manage the _OFX_ file.
 You can extract the data from a _OFX_ file or build an _OFX_ file.
 
 ## Links
--    [https://schemas.liquid-technologies.com/ofx/2.1.1/](https://schemas.liquid-technologies.com/ofx/2.1.1/)
+
+- [https://schemas.liquid-technologies.com/ofx/2.1.1/](https://schemas.liquid-technologies.com/ofx/2.1.1/)
 
 ## Notes
--    Inital implementation cloned from [strobelt/ofxparser.netcore](https://github.com/strobelt/ofxparser.netcore).
--    OFX entities classes inspired from [Aspose.Finance](https://products.aspose.com/finance/net/) package.
+
+- Inital implementation cloned from [strobelt/ofxparser.netcore](https://github.com/strobelt/ofxparser.netcore).
+- OFX entities classes inspired from [Aspose.Finance](https://products.aspose.com/finance/net/) package.
 
 ## License
 **OFX-Tool** is available under the MIT license. See the LICENSE file for more info.
