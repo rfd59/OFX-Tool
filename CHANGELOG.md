@@ -7,6 +7,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.1.1] (2022-09-04)
 #### Added
--   Extract the fields from an _OFX_ file 
+-   Extract the fields from an _OFX_ file
 
 [0.1.1]: https://github.com/rfd59/OFX-Tool/tree/0.1.1
