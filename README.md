@@ -2,7 +2,7 @@
 C# library for **OFX** file.
 
 [![CICD](https://github.com/rfavreau/OFX-Tool/actions/workflows/CICD.yml/badge.svg)](https://github.com/rfavreau/OFX-Tool/actions/workflows/CICD.yml)
-[![Coverage Status](https://coveralls.io/repos/github/rfavreau/OFX-Tool/badge.svg?branch=master)](https://coveralls.io/github/rfavreau/OFX-Tool?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/rfd59/OFX-Tool/badge.svg?branch=quality-code)](https://coveralls.io/github/rfd59/OFX-Tool?branch=quality-code)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/2557b727bfff4ac69b8b4e10a8148a56)](https://www.codacy.com/gh/rfd59/OFX-Tool/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=rfd59/OFX-Tool&amp;utm_campaign=Badge_Grade)
 [![Nuget](https://img.shields.io/nuget/v/RFD.OFX-Tool)](https://www.nuget.org/packages/RFD.OFX-Tool)
 ![GitHub](https://img.shields.io/github/license/rfd59/OFX-Tool)
