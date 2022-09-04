@@ -9,13 +9,27 @@ jobs:
     name: Validation
     runs-on: ubuntu-latest
     steps:
+
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      
+      - name: Setup GitVersion
+        uses: gittools/actions/gitversion/setup@v0.9.7
+        with:
+            versionSpec: '5.x'
+
+      - name: Determine Version
+        id:   gitversion
+        uses: gittools/actions/gitversion/execute@v0.9.7
+        with:
+          useConfigFile: true
 
       - name: Changelog check
-        uses: Zomzog/changelog-checker@v1.2.0
-        with:
-          fileName: CHANGELOG.md
-          noChangelogLabel: byPassChangelog
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+            grep --quiet --no-messages "^## \[$(echo ${{ steps.gitversion.outputs.majorMinorPatch }} | sed s/\\\./\\\\\./g)\]" ./CHANGELOG.md
+            if [ $? -ne 0 ]; then
+                echo "::error::Don't forget to update the CHANGELOG with the change of this new release!"
+                exit 1
+            fi
