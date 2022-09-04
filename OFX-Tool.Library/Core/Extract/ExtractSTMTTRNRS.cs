@@ -44,6 +44,8 @@ namespace RFD.OFXTool.Library.Core.Extract
                         case "TRNUID":
                             Element.TransactionUniqueId = xmlReader.Value;
                             break;
+                        default:
+                            throw new InvalidOperationException($"Unexpected value! [{myField}]");
                     }
                 }
             }

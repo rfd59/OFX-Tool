@@ -46,6 +46,8 @@ namespace RFD.OFXTool.Library.Core.Extract
                         case "DTEND":
                             Element.EndDate = xmlReader.Value;
                             break;
+                        default:
+                            throw new InvalidOperationException($"Unexpected value! [{myField}]");
                     }
                 }
             }
