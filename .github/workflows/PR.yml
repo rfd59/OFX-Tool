@@ -1,0 +1,21 @@
+name: Release Validation
+on:
+  pull_request:
+    types: [assigned, opened, synchronize, reopened, labeled, unlabeled]
+    branches:
+      - master
+jobs:
+  PR:
+    name: Validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Changelog check
+        uses: Zomzog/changelog-checker@v1.2.0
+        with:
+          fileName: CHANGELOG.md
+          noChangelogLabel: byPassChangelog
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

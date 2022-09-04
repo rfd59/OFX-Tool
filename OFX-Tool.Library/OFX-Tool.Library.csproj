@@ -1,10 +1,34 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
+    <AssemblyName>OFX-Tool</AssemblyName>
     <RootNamespace>RFD.OFXTool.Library</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <PackageId>RFD.$(AssemblyName)</PackageId>
+    <Authors>rfavreau,rfd59</Authors>
+    <Company>RFD</Company>
+    <Product>$(AssemblyName)</Product>
+    <Description>This project provides a .Net 6.0 library to manage the OFX file.
+&gt; An OFX file is a financial data file created in the Open Financial Exchange (OFX) format, an open format for transferring data between vendors, consumers, and financial systems. It contains transactions, statements, and other financial information
+
+You can extract the data from a OFX file or build an OFX file.</Description>
+    <Copyright>Copyright (c) 2022 RFD</Copyright>
+    <RepositoryUrl>https://github.com/rfd59/OFX-Tool</RepositoryUrl>
+    <PackageTags>c#;ofx;parser</PackageTags>
+    <PackageReleaseNotes>See https://github.com/rfd59/OFX-Tool/releases</PackageReleaseNotes>
+    <NeutralLanguage>en</NeutralLanguage>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>
