@@ -130,8 +130,8 @@ jobs:
           tag_name: ${{ needs.CI.outputs.semVer }}
           release_name: Release ${{ needs.CI.outputs.semVer }}
           body_path: ./release.txt
-          draft: true
-          prerelease: true
+          draft: false
+          prerelease: false
 
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1
