@@ -30,6 +30,6 @@ jobs:
         run: |
             grep --quiet --no-messages "^## \[$(echo ${{ steps.gitversion.outputs.majorMinorPatch }} | sed s/\\\./\\\\\./g)\]" ./CHANGELOG.md
             if [ $? -ne 0 ]; then
-                echo "::error::Don't forget to update the CHANGELOG with the change of this new release!"
+                echo "::error file=CHANGELOG.md::Don't forget to update the CHANGELOG with the change of this new release!"
                 exit 1
             fi
