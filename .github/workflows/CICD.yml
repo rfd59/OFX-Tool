@@ -14,8 +14,6 @@ jobs:
     runs-on: ubuntu-latest
 
     outputs:
-      majorMinorPatch: ${{ steps.gitversion.outputs.majorMinorPatch }}
-      preReleaseTag: ${{ steps.gitversion.outputs.preReleaseTag }}
       semVer: ${{ steps.gitversion.outputs.semVer }}
 
     steps:
@@ -98,7 +96,7 @@ jobs:
           key: ${{ github.sha }}
 
       - name: Pack
-        run: dotnet pack -c Release --no-build -o . /p:PackageID=${{ env.orgaName }}.${{ env.projectName }} /p:VersionPrefix=${{ needs.CI.outputs.majorMinorPatch }} /p:VersionSuffix=${{ needs.CI.outputs.preReleaseTag }}
+        run: dotnet pack -c Release --no-build -o . /p:PackageID=${{ env.orgaName }}.${{ env.projectName }} /p:Version=${{ needs.CI.outputs.semVer }}
       
       - name: Push to NuGet
         run: dotnet nuget push *.nupkg --skip-duplicate -s https://api.nuget.org/v3/index.json -k ${{ secrets.NUGET }}
@@ -110,7 +108,7 @@ jobs:
             DEFAULT_BODY="N/A"
             
             if [ -f ${CHANGELOG_FILE} ]; then
-                gawk -v release=${{ needs.CI.outputs.majorMinorPatch }} '
+                gawk -v release=${{ needs.CI.outputs.semVer }} '
                     BEGIN { tag=0 }
                     /^## / { tag=0 }
                     /^\[/ { tag=0 }
