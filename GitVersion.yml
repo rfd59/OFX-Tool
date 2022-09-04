@@ -1,0 +1,4 @@
+mode: Mainline
+branches:
+  pull-request:
+    tag: rc

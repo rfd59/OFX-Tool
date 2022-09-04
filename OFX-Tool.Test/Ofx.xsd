@@ -1,0 +1,113 @@
+﻿<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="OFX">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="SIGNONMSGSRSV1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="SONRS">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="STATUS">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:byte" name="CODE"/>
+                          <xs:element type="xs:string" name="SEVERITY"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element type="xs:long" name="DTSERVER"/>
+                    <xs:element type="xs:string" name="LANGUAGE"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="BANKMSGSRSV1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="STMTTRNRS">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:long" name="TRNUID"/>
+                    <xs:element name="STATUS">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:byte" name="CODE"/>
+                          <xs:element type="xs:string" name="SEVERITY"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="STMTRS">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="CURDEF"/>
+                          <xs:element name="BANKACCTFROM">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:short" name="BANKID"/>
+                                <xs:element type="xs:short" name="BRANCHID"/>
+                                <xs:element type="xs:int" name="ACCTID"/>
+								<xs:element name="ACCTTYPE">
+									<xs:simpleType>
+									    <xs:restriction base="xs:string">
+										    <xs:enumeration value="CHECKING"/>
+											<xs:enumeration value="SAVINGS"/>
+											<xs:enumeration value="MONEYMRKT"/>
+											<xs:enumeration value="CREDITLINE"/>
+									    </xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="BANKTRANLIST">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:long" name="DTSTART"/>
+                                <xs:element type="xs:long" name="DTEND"/>
+                                <xs:element name="STMTTRN">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element type="xs:string" name="TRNTYPE"/>
+                                      <xs:element type="xs:int" name="DTPOSTED"/>
+                                      <xs:element type="xs:int" name="DTUSER"/>
+                                      <xs:element type="xs:float" name="TRNAMT"/>
+                                      <xs:element type="xs:string" name="FITID"/>
+                                      <xs:element type="xs:string" name="MEMO"/>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="LEDGERBAL">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:float" name="BALAMT"/>
+                                <xs:element type="xs:long" name="DTASOF"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="AVAILBAL">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:float" name="BALAMT"/>
+                                <xs:element type="xs:long" name="DTASOF"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

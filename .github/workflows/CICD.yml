@@ -1,0 +1,145 @@
+name: CICD
+
+on: [push]
+
+env:
+  projectName: OFX-Tool
+  orgaName: RFD
+
+jobs:
+  # Continuous Integration job
+  CI:
+    name: Continuous Integration
+
+    runs-on: ubuntu-latest
+
+    outputs:
+      majorMinorPatch: ${{ steps.gitversion.outputs.majorMinorPatch }}
+      preReleaseTag: ${{ steps.gitversion.outputs.preReleaseTag }}
+      semVer: ${{ steps.gitversion.outputs.semVer }}
+
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+         
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v2.1.0
+        with:
+          dotnet-version: 6.0.x
+      
+      - name: Setup GitVersion
+        uses: gittools/actions/gitversion/setup@v0.9.7
+        with:
+            versionSpec: '5.x'
+
+      - name: Determine Version
+        id:   gitversion
+        uses: gittools/actions/gitversion/execute@v0.9.7
+        with:
+          useConfigFile: true
+
+      - name: Restore dependencies
+        run: dotnet restore
+    
+      - name: Build
+        run: dotnet build -c Release --no-restore /p:VersionPrefix=${{ steps.gitversion.outputs.majorMinorPatch }} /p:VersionSuffix=${{ steps.gitversion.outputs.preReleaseTag }}
+
+      - name: Test
+        id: test
+        run: dotnet test -c Release --no-build --verbosity normal --filter "Category!=LongRunning" /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat="lcov" --logger "trx;LogFileName=test-results.trx" || true
+
+      # https://octopus.com/blog/githubactions-running-unit-tests
+      - name: Test Report
+        uses: dorny/test-reporter@v1
+        if: ${{ success() || (failure() && steps.test.conclusion == 'failure') }}
+        with:
+          name: Unit test report
+          path: "**/test-results.trx"                            
+          reporter: dotnet-trx
+          fail-on-error: true
+
+      # https://samlearnsazure.blog/2021/01/05/code-coverage-in-github-with-net-core/
+      - name: Coverage Report
+        uses: coverallsapp/github-action@master   
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }} 
+          path-to-lcov: ${{ env.projectName }}.Test/TestResults/coverage.info
+      
+      - name: Quality Report
+        run: |
+            mv ${{ env.projectName }}.Test/TestResults/coverage.info ${{ env.projectName }}.Test/TestResults/lcov.info
+            export CODACY_PROJECT_TOKEN=${{ secrets.CODACY }}
+            bash <(curl -Ls https://coverage.codacy.com/get.sh)
+
+      - name: Cache Build
+        uses: actions/cache@v2
+        if: github.ref == 'refs/heads/master'
+        with:
+          path: ./*
+          key: ${{ github.sha }}
+  
+  # Continuous Delivry job
+  CD:
+    name: Continuous Delivry
+    if: github.ref == 'refs/heads/master'
+
+    needs: CI
+    runs-on: ubuntu-latest
+
+    steps:
+    
+      - name: Restore Build
+        uses: actions/cache@v2
+        with:
+          path: ./*
+          key: ${{ github.sha }}
+
+      - name: Pack
+        run: dotnet pack -c Release --no-build -o . /p:PackageID=${{ env.orgaName }}.${{ env.projectName }} /p:VersionPrefix=${{ needs.CI.outputs.majorMinorPatch }} /p:VersionSuffix=${{ needs.CI.outputs.preReleaseTag }}
+      
+      - name: Push to NuGet
+        run: dotnet nuget push *.nupkg --skip-duplicate -s https://api.nuget.org/v3/index.json -k ${{ secrets.NUGET }}
+
+      - name: Build Release
+        id: build_release
+        run: |
+            CHANGELOG_FILE=./CHANGELOG.md
+            DEFAULT_BODY="N/A"
+            
+            if [ -f ${CHANGELOG_FILE} ]; then
+                gawk -v release=${{ needs.CI.outputs.majorMinorPatch }} '
+                    BEGIN { tag=0 }
+                    /^## / { tag=0 }
+                    /^\[/ { tag=0 }
+                    { if(tag==1) print $0 }
+                    match($0, /## \[(.*)\]/, arr) { if(arr[1]==release) tag=1 }
+                ' ${CHANGELOG_FILE} | sed -z 's/^\n*\|\n*$//g' > ./release.txt
+            else
+                echo $DEFAULT_BODY > ./release.txt
+            fi
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ needs.CI.outputs.semVer }}
+          release_name: Release ${{ needs.CI.outputs.semVer }}
+          body_path: ./release.txt
+          draft: false
+          prerelease: false
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+          asset_path: ./${{ env.orgaName }}.${{ env.projectName }}.${{ needs.CI.outputs.semVer }}.nupkg
+          asset_name: ${{ env.orgaName }}.${{ env.projectName }}.${{ needs.CI.outputs.semVer }}.nupkg
+          asset_content_type: application/zip
+ 
