@@ -1,4 +1,5 @@
 ﻿using RFD.OFXTool.Library.Entities;
+using System.Reflection;
 using System.Xml;
 
 namespace RFD.OFXTool.Library.Core.Extract
@@ -15,7 +16,7 @@ namespace RFD.OFXTool.Library.Core.Extract
             while (xmlReader.Read())
             {
                 // End of this element object
-                if (xmlReader.NodeType == XmlNodeType.EndElement && xmlReader.Name.Equals("STATUS"))
+                if (xmlReader.NodeType == XmlNodeType.EndElement && xmlReader.Name.Equals(Entity.GetElementClass<Status>().Name))
                 {
                     break;
                 }
@@ -27,17 +28,12 @@ namespace RFD.OFXTool.Library.Core.Extract
 
                 if (xmlReader.NodeType == XmlNodeType.Text)
                 {
-                    switch (myField)
-                    {
-                        case "CODE":
-                            Element.Code = xmlReader.Value;
-                            break;
-                        case "SEVERITY":
-                            Element.Severity = (SeverityEnum)Enum.Parse(typeof(SeverityEnum), xmlReader.Value);
-                            break;
-                        default:
-                            throw new InvalidOperationException($"Unexpected value! [{myField}]");
-                    }
+                    if (myField == Entity.GetElementProperty<Status>(nameof(Status.Code)).Name)
+                        Element.Code = xmlReader.Value;
+                    else if (myField == Entity.GetElementProperty<Status>(nameof(Status.Severity)).Name)
+                        Element.Severity = (SeverityEnum)Enum.Parse(typeof(SeverityEnum), xmlReader.Value);
+                    else
+                        throw new InvalidOperationException($"Unexpected value! [{myField}]");
                 }
             }
         }
