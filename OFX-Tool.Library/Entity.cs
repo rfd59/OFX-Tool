@@ -1,4 +1,8 @@
-﻿namespace RFD.OFXTool.Library
+﻿using RFD.OFXTool.Library.Attributes;
+using RFD.OFXTool.Library.Core;
+using System.Reflection;
+
+namespace RFD.OFXTool.Library
 {
     public static class Entity
     {
@@ -21,6 +25,17 @@
                 }
 
             }
+        }
+        public static Element GetElementProperty<T>(string property)
+        {
+            // This uses C#'s reflection to get the attribute if one exists
+            PropertyInfo? propertyInfo = typeof(T).GetProperty(property);
+            return (Element) Attribute.GetCustomAttribute(propertyInfo, typeof(Element), true);
+        }
+
+        public static Element GetElementClass<T>()
+        {
+            return (Element)Attribute.GetCustomAttribute(typeof(T), typeof(Element), true);
         }
     }
 }
