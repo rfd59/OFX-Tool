@@ -1,4 +1,5 @@
 ﻿using RFD.OFXTool.Library.Entities;
+using RFD.OFXTool.Library.Entities.Signon;
 using System.Xml;
 
 namespace RFD.OFXTool.Library.Core.Extract
@@ -14,13 +15,13 @@ namespace RFD.OFXTool.Library.Core.Extract
             while (xmlReader.Read())
             {
                 // End of this element object
-                if (xmlReader.NodeType == XmlNodeType.EndElement && xmlReader.Name.Equals("SIGNONMSGSRSV1"))
+                if (xmlReader.NodeType == XmlNodeType.EndElement && xmlReader.Name.Equals(Entity.GetElementClass<SignonResponseMessageSetV1>().Name))
                 {
                     break;
                 }
 
                 // SONRS element object
-                if (xmlReader.NodeType == XmlNodeType.Element && xmlReader.Name.Equals("SONRS"))
+                if (xmlReader.NodeType == XmlNodeType.Element && xmlReader.Name.Equals(Entity.GetElementClass<SignonResponse>().Name))
                 {
                     Element.SignonResponse = new ExtractSONRS(xmlReader).Element;
                 }

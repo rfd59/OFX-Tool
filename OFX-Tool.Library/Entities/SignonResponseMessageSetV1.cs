@@ -1,7 +1,9 @@
-﻿using RFD.OFXTool.Library.Entities.Signon;
+﻿using RFD.OFXTool.Library.Attributes;
+using RFD.OFXTool.Library.Entities.Signon;
 
 namespace RFD.OFXTool.Library.Entities
 {
+    [Element("SIGNONMSGSRSV1", ElementTypeEnum.CLASS)]
     public class SignonResponseMessageSetV1
     {
         public SignonResponse? SignonResponse { get; set; }

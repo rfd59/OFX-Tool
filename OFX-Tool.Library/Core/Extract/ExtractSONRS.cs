@@ -16,13 +16,13 @@ namespace RFD.OFXTool.Library.Core.Extract
             while (xmlReader.Read())
             {
                 // End of this element object
-                if (xmlReader.NodeType == XmlNodeType.EndElement && xmlReader.Name.Equals("SONRS"))
+                if (xmlReader.NodeType == XmlNodeType.EndElement && xmlReader.Name.Equals(Entity.GetElementClass<SignonResponse>().Name))
                 {
                     break;
                 }
 
                 // STATUS element object
-                if (xmlReader.NodeType == XmlNodeType.Element && xmlReader.Name.Equals("STATUS"))
+                if (xmlReader.NodeType == XmlNodeType.Element && xmlReader.Name.Equals(Entity.GetElementClass<Status>().Name))
                 {
                     Element.Status = new ExtractSTATUS(xmlReader).Element;
                 }
@@ -34,17 +34,12 @@ namespace RFD.OFXTool.Library.Core.Extract
 
                 if (xmlReader.NodeType == XmlNodeType.Text)
                 {
-                    switch (myField)
-                    {
-                        case "DTSERVER":
-                            Element.ServerDate = xmlReader.Value;
-                            break;
-                        case "LANGUAGE":
-                            Element.Language = (LanguageEnum)Enum.Parse(typeof(LanguageEnum), xmlReader.Value);
-                            break;
-                        default:
-                            throw new InvalidOperationException($"Unexpected value! [{myField}]");
-                    }
+                    if (myField == Entity.GetElementProperty<SignonResponse>(nameof(SignonResponse.ServerDate)).Name)
+                        Element.ServerDate = xmlReader.Value;
+                    else if (myField == Entity.GetElementProperty<SignonResponse>(nameof(SignonResponse.Language)).Name)
+                        Element.Language = (LanguageEnum)Enum.Parse(typeof(LanguageEnum), xmlReader.Value);
+                    else
+                        throw new InvalidOperationException($"Unexpected value! [{myField}]");
                 }
             }
         }
