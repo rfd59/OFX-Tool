@@ -1,5 +1,6 @@
 ﻿using RFD.OFXTool.Library.Entities;
 using RFD.OFXTool.Library.Entities.Signon;
+using System.Text;
 using System.Xml;
 
 namespace RFD.OFXTool.Library.Core.Extract
