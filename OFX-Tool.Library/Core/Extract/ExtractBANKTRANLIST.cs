@@ -15,7 +15,7 @@ namespace RFD.OFXTool.Library.Core.Extract
             while (xmlReader.Read())
             {
                 // End of this element object
-                if (xmlReader.NodeType == XmlNodeType.EndElement && xmlReader.Name.Equals("BANKTRANLIST"))
+                if (xmlReader.NodeType == XmlNodeType.EndElement && xmlReader.Name.Equals(Entity.GetElementClass<BankTransactionList>().Name))
                 {
                     break;
                 }
@@ -38,17 +38,12 @@ namespace RFD.OFXTool.Library.Core.Extract
 
                 if (xmlReader.NodeType == XmlNodeType.Text)
                 {
-                    switch (myField)
-                    {
-                        case "DTSTART":
-                            Element.StartDate = xmlReader.Value;
-                            break;
-                        case "DTEND":
-                            Element.EndDate = xmlReader.Value;
-                            break;
-                        default:
-                            throw new InvalidOperationException($"Unexpected value! [{myField}]");
-                    }
+                    if (myField == Entity.GetElementProperty<BankTransactionList>(nameof(BankTransactionList.StartDate)).Name)
+                        Element.StartDate = xmlReader.Value;
+                    else if (myField == Entity.GetElementProperty<BankTransactionList>(nameof(BankTransactionList.EndDate)).Name)
+                        Element.EndDate = xmlReader.Value;
+                    else
+                        throw new InvalidOperationException($"Unexpected value! [{myField}]");
                 }
             }
         }

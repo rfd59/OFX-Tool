@@ -1,7 +1,9 @@
-﻿using RFD.OFXTool.Library.Entities.Bank;
+﻿using RFD.OFXTool.Library.Attributes;
+using RFD.OFXTool.Library.Entities.Bank;
 
 namespace RFD.OFXTool.Library.Entities
 {
+    [Element("BANKMSGSRSV1", ElementTypeEnum.CLASS)]
     public class BankResponseMessageSetV1
     {
         public List<StatementTransactionResponse>? StatementTransactionResponses { get; set; }

@@ -16,7 +16,7 @@ namespace RFD.OFXTool.Library.Core.Extract
             while (xmlReader.Read())
             {
                 // End of this element object
-                if (xmlReader.NodeType == XmlNodeType.EndElement && xmlReader.Name.Equals("STMTTRN"))
+                if (xmlReader.NodeType == XmlNodeType.EndElement && xmlReader.Name.Equals(Entity.GetElementClass<StatementTransaction>().Name))
                 {
                     break;
                 }
@@ -28,32 +28,38 @@ namespace RFD.OFXTool.Library.Core.Extract
 
                 if (xmlReader.NodeType == XmlNodeType.Text)
                 {
-                    switch (myField)
-                    {
-                        case "TRNTYPE":
-                            Element.TransactionType = (TransactionEnum)Enum.Parse(typeof(TransactionEnum), xmlReader.Value);
-                            break;
-                        case "DTPOSTED":
-                            Element.PostedDate = xmlReader.Value;
-                            break;
-                        case "DTUSER":
-                            Element.UserDate = xmlReader.Value;
-                            break;
-                        case "TRNAMT":
-                            Element.TransactionAmount = xmlReader.Value;
-                            break;
-                        case "FITID":
-                            Element.FinancialInstitutionTransactionId = xmlReader.Value;
-                            break;
-                        case "CHECKNUM":
-                            Element.CheckNumber = xmlReader.Value;
-                            break;
-                        case "MEMO":
-                            Element.Memo = xmlReader.Value;
-                            break;
-                        default:
-                            throw new InvalidOperationException($"Unexpected value! [{myField}]");
-                    }
+                    if (myField == Entity.GetElementProperty<StatementTransaction>(nameof(StatementTransaction.TransactionType)).Name)
+                        Element.TransactionType = (TransactionEnum)Enum.Parse(typeof(TransactionEnum), xmlReader.Value);
+                    else if (myField == Entity.GetElementProperty<StatementTransaction>(nameof(StatementTransaction.PostedDate)).Name)
+                        Element.PostedDate = xmlReader.Value;
+                    else if (myField == Entity.GetElementProperty<StatementTransaction>(nameof(StatementTransaction.UserDate)).Name)
+                        Element.UserDate = xmlReader.Value;
+                    else if (myField == Entity.GetElementProperty<StatementTransaction>(nameof(StatementTransaction.TransactionAmount)).Name)
+                        Element.TransactionAmount = xmlReader.Value;
+                    else if (myField == Entity.GetElementProperty<StatementTransaction>(nameof(StatementTransaction.FinancialInstitutionTransactionId)).Name)
+                        Element.FinancialInstitutionTransactionId = xmlReader.Value;
+                    else if (myField == Entity.GetElementProperty<StatementTransaction>(nameof(StatementTransaction.CheckNumber)).Name)
+                        Element.CheckNumber = xmlReader.Value;
+                    else if (myField == Entity.GetElementProperty<StatementTransaction>(nameof(StatementTransaction.Memo)).Name)
+                        Element.Memo = xmlReader.Value;
+                    else if (myField == Entity.GetElementProperty<StatementTransaction>(nameof(StatementTransaction.Name)).Name)
+                        Element.Name = xmlReader.Value;
+                    else if (myField == Entity.GetElementProperty<StatementTransaction>(nameof(StatementTransaction.PayeeId)).Name)
+                        Element.PayeeId = xmlReader.Value;
+                    else if (myField == Entity.GetElementProperty<StatementTransaction>(nameof(StatementTransaction.StandardIndustrialCode)).Name)
+                        Element.StandardIndustrialCode = xmlReader.Value;
+                    else if (myField == Entity.GetElementProperty<StatementTransaction>(nameof(StatementTransaction.ExtendedName)).Name)
+                        Element.ExtendedName = xmlReader.Value;
+                    else if (myField == Entity.GetElementProperty<StatementTransaction>(nameof(StatementTransaction.ReferenceNumber)).Name)
+                        Element.ReferenceNumber = xmlReader.Value;
+                    else if (myField == Entity.GetElementProperty<StatementTransaction>(nameof(StatementTransaction.ServerTransactionId)).Name)
+                        Element.ServerTransactionId = xmlReader.Value;
+                    else if (myField == Entity.GetElementProperty<StatementTransaction>(nameof(StatementTransaction.CorrectFinancialInstitutionTransactionId)).Name)
+                        Element.CorrectFinancialInstitutionTransactionId = xmlReader.Value;
+                    else if (myField == Entity.GetElementProperty<StatementTransaction>(nameof(StatementTransaction.AvailableDate)).Name)
+                        Element.AvailableDate = xmlReader.Value;
+                    else
+                        throw new InvalidOperationException($"Unexpected value! [{myField}]");
                 }
             }
         }

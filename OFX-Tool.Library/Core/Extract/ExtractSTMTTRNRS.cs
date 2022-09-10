@@ -1,4 +1,5 @@
-﻿using RFD.OFXTool.Library.Entities.Bank;
+﻿using RFD.OFXTool.Library.Entities;
+using RFD.OFXTool.Library.Entities.Bank;
 using System.Xml;
 
 namespace RFD.OFXTool.Library.Core.Extract
@@ -15,19 +16,19 @@ namespace RFD.OFXTool.Library.Core.Extract
             while (xmlReader.Read())
             {
                 // End of this element object
-                if (xmlReader.NodeType == XmlNodeType.EndElement && xmlReader.Name.Equals("STMTTRNRS"))
+                if (xmlReader.NodeType == XmlNodeType.EndElement && xmlReader.Name.Equals(Entity.GetElementClass<StatementTransactionResponse>().Name))
                 {
                     break;
                 }
 
                 // STATUS element object
-                if (xmlReader.NodeType == XmlNodeType.Element && xmlReader.Name.Equals("STATUS"))
+                if (xmlReader.NodeType == XmlNodeType.Element && xmlReader.Name.Equals(Entity.GetElementClass<Status>().Name))
                 {
                     Element.Status = new ExtractSTATUS(xmlReader).Element;
                 }
 
                 // STMTRS element object
-                if (xmlReader.NodeType == XmlNodeType.Element && xmlReader.Name.Equals("STMTRS"))
+                if (xmlReader.NodeType == XmlNodeType.Element && xmlReader.Name.Equals(Entity.GetElementClass<StatementResponse>().Name))
                 {
                     Element.StatementResponse = new ExtractSTMTRS(xmlReader).Element;
                 }
@@ -39,14 +40,12 @@ namespace RFD.OFXTool.Library.Core.Extract
 
                 if (xmlReader.NodeType == XmlNodeType.Text)
                 {
-                    switch (myField)
-                    {
-                        case "TRNUID":
-                            Element.TransactionUniqueId = xmlReader.Value;
-                            break;
-                        default:
-                            throw new InvalidOperationException($"Unexpected value! [{myField}]");
-                    }
+                    if (myField == Entity.GetElementProperty<StatementTransactionResponse>(nameof(StatementTransactionResponse.TransactionUniqueId)).Name)
+                        Element.TransactionUniqueId = xmlReader.Value;
+                    else if (myField == Entity.GetElementProperty<StatementTransactionResponse>(nameof(StatementTransactionResponse.ClientCookie)).Name)
+                        Element.ClientCookie = xmlReader.Value;
+                    else
+                        throw new InvalidOperationException($"Unexpected value! [{myField}]");
                 }
             }
         }

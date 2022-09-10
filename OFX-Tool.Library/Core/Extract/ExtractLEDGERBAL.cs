@@ -15,7 +15,7 @@ namespace RFD.OFXTool.Library.Core.Extract
             while (xmlReader.Read())
             {
                 // End of this element object
-                if (xmlReader.NodeType == XmlNodeType.EndElement && xmlReader.Name.Equals("LEDGERBAL"))
+                if (xmlReader.NodeType == XmlNodeType.EndElement && xmlReader.Name.Equals(Entity.GetElementClass<LedgerBalance>().Name))
                 {
                     break;
                 }
@@ -27,17 +27,12 @@ namespace RFD.OFXTool.Library.Core.Extract
 
                 if (xmlReader.NodeType == XmlNodeType.Text)
                 {
-                    switch (myField)
-                    {
-                        case "BALAMT":
-                            Element.BalanceAmount = xmlReader.Value;
-                            break;
-                        case "DTASOF":
-                            Element.DateAsOf = xmlReader.Value;
-                            break;
-                        default:
-                            throw new InvalidOperationException($"Unexpected value! [{myField}]");
-                    }
+                    if (myField == Entity.GetElementProperty<LedgerBalance>(nameof(LedgerBalance.BalanceAmount)).Name)
+                        Element.BalanceAmount = xmlReader.Value;
+                    else if (myField == Entity.GetElementProperty<LedgerBalance>(nameof(LedgerBalance.DateAsOf)).Name)
+                        Element.DateAsOf = xmlReader.Value;
+                    else
+                    throw new InvalidOperationException($"Unexpected value! [{myField}]");
                 }
             }
         }

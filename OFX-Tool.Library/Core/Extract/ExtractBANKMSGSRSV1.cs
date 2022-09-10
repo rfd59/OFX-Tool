@@ -15,13 +15,13 @@ namespace RFD.OFXTool.Library.Core.Extract
             while (xmlReader.Read())
             {
                 // End of this element object
-                if (xmlReader.NodeType == XmlNodeType.EndElement && xmlReader.Name.Equals("BANKMSGSRSV1"))
+                if (xmlReader.NodeType == XmlNodeType.EndElement && xmlReader.Name.Equals(Entity.GetElementClass<BankResponseMessageSetV1>().Name))
                 {
                     break;
                 }
 
                 // SONRS element object
-                if (xmlReader.NodeType == XmlNodeType.Element && xmlReader.Name.Equals("STMTTRNRS"))
+                if (xmlReader.NodeType == XmlNodeType.Element && xmlReader.Name.Equals(Entity.GetElementClass<StatementTransactionResponse>().Name))
                 {
                     if (Element.StatementTransactionResponses == null)
                     {
