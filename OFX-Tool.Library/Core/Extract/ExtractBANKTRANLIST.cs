@@ -19,9 +19,9 @@ namespace RFD.OFXTool.Library.Core.Extract
                 {
                     break;
                 }
-
+                
                 // STMTTRN element object
-                if (xmlReader.NodeType == XmlNodeType.Element && xmlReader.Name.Equals("STMTTRN"))
+                if (xmlReader.NodeType == XmlNodeType.Element && xmlReader.Name.Equals(Entity.GetElementClass<StatementTransaction>().Name))
                 {
                     if (Element.StatementTransactions == null)
                     {

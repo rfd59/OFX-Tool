@@ -28,13 +28,13 @@ namespace RFD.OFXTool.Library.Core
                 while (xmlReader.Read())
                 {
                     //
-                    if (xmlReader.NodeType == XmlNodeType.Element && xmlReader.Name.Equals("SIGNONMSGSRSV1"))
+                    if (xmlReader.NodeType == XmlNodeType.Element && xmlReader.Name.Equals(Entity.GetElementClass<SignonResponseMessageSetV1>().Name))
                     {
                         OfxDocument.SignonResponseMessageSetV1 = new ExtractSIGNONMSGSRSV1(xmlReader).Element;
                     }
 
                     //
-                    if (xmlReader.NodeType == XmlNodeType.Element && xmlReader.Name.Equals("BANKMSGSRSV1"))
+                    if (xmlReader.NodeType == XmlNodeType.Element && xmlReader.Name.Equals(Entity.GetElementClass<BankResponseMessageSetV1>().Name))
                     {
                         OfxDocument.BankResponseMessageSetV1 = new ExtractBANKMSGSRSV1(xmlReader).Element;
                     }
