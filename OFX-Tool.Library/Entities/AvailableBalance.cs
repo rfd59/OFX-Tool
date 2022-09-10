@@ -1,14 +1,19 @@
-﻿namespace RFD.OFXTool.Library.Entities
+﻿using RFD.OFXTool.Library.Attributes;
+
+namespace RFD.OFXTool.Library.Entities
 {
+    [Element("AVAILBAL", ElementTypeEnum.CLASS)]
     public class AvailableBalance
     {
         //
         // Résumé :
         //     Gets or sets the available balance amount.
+        [Element("BALAMT", ElementTypeEnum.PROPERTY)]
         public string? BalanceAmount { get; set; }
         //
         // Résumé :
         //     Gets or sets the balance date.
+        [Element("DTASOF", ElementTypeEnum.PROPERTY)]
         public string? DateAsOf { get; set; }
 
         // Determines whether the specified object is equal to the current object.
