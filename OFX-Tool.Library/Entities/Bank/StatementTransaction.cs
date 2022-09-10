@@ -9,46 +9,46 @@ namespace RFD.OFXTool.Library.Entities.Bank
         [Element("TRNTYPE", ElementTypeEnum.PROPERTY)]
         public TransactionEnum? TransactionType { get; set; }
         // Gets or sets the date user initiated transaction, if known.
-        [Element("DTUSER", ElementTypeEnum.PROPERTY)] 
+        [Element("DTUSER", ElementTypeEnum.PROPERTY)]
         public string? UserDate { get; set; }
         // Gets or sets the date transaction was posted to account.
-        [Element("DTPOSTED", ElementTypeEnum.PROPERTY)] 
+        [Element("DTPOSTED", ElementTypeEnum.PROPERTY)]
         public string? PostedDate { get; set; }
         // Gets or sets the amount of transaction.
-        [Element("TRNAMT", ElementTypeEnum.PROPERTY)] 
+        [Element("TRNAMT", ElementTypeEnum.PROPERTY)]
         public string? TransactionAmount { get; set; }
         // Gets or sets the transaction ID issued by financial institution.
-        [Element("FITID", ElementTypeEnum.PROPERTY)] 
+        [Element("FITID", ElementTypeEnum.PROPERTY)]
         public string? FinancialInstitutionTransactionId { get; set; }
         // Gets or sets the check number.
-        [Element("CHECKNUM", ElementTypeEnum.PROPERTY)] 
+        [Element("CHECKNUM", ElementTypeEnum.PROPERTY)]
         public string? CheckNumber { get; set; }
         // Gets or sets the extra information.
-        [Element("MEMO", ElementTypeEnum.PROPERTY)] 
+        [Element("MEMO", ElementTypeEnum.PROPERTY)]
         public string? Memo { get; set; }
         // Gets or sets the name of payee or description of transaction.
-        [Element("NAME", ElementTypeEnum.PROPERTY)] 
+        [Element("NAME", ElementTypeEnum.PROPERTY)]
         public string? Name { get; set; }
         // Gets or sets the payee identifier if available.
-        [Element("PAYEEID", ElementTypeEnum.PROPERTY)] 
+        [Element("PAYEEID", ElementTypeEnum.PROPERTY)]
         public string? PayeeId { get; set; }
         // Gets or sets the Standard Industrial Code.
-        [Element("SIC", ElementTypeEnum.PROPERTY)] 
+        [Element("SIC", ElementTypeEnum.PROPERTY)]
         public string? StandardIndustrialCode { get; set; }
         // Gets or sets the extended name of payee or description of transaction.
-        [Element("EXTDNAME", ElementTypeEnum.PROPERTY)] 
+        [Element("EXTDNAME", ElementTypeEnum.PROPERTY)]
         public string? ExtendedName { get; set; }
         // Gets or sets the reference number that uniquely identifies the transaction.
-        [Element("REFNUM", ElementTypeEnum.PROPERTY)] 
+        [Element("REFNUM", ElementTypeEnum.PROPERTY)]
         public string? ReferenceNumber { get; set; }
         // Gets or sets the server assigned transaction ID.
-        [Element("SRVRTID", ElementTypeEnum.PROPERTY)] 
+        [Element("SRVRTID", ElementTypeEnum.PROPERTY)]
         public string? ServerTransactionId { get; set; }
         // Gets or sets the corrected transaction ID. If present, the FinancialInstitutionTransactionId of a previously sent transaction that is corrected by this record.
-        [Element("CORRECTFITID", ElementTypeEnum.PROPERTY)] 
+        [Element("CORRECTFITID", ElementTypeEnum.PROPERTY)]
         public string? CorrectFinancialInstitutionTransactionId { get; set; }
         // Gets or sets the date funds are available (value date).
-        [Element("DTAVAIL", ElementTypeEnum.PROPERTY)] 
+        [Element("DTAVAIL", ElementTypeEnum.PROPERTY)]
         public string? AvailableDate { get; set; }
 
         // Determines whether the specified object is equal to the current object.

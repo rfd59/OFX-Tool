@@ -15,13 +15,13 @@ namespace RFD.OFXTool.Library.Entities.Bank
         [Element("BRANCHID", ElementTypeEnum.PROPERTY)]
         public string? BranchId { get; set; }
         // Gets or sets the account identifier.
-        [Element("ACCTID", ElementTypeEnum.PROPERTY)] 
+        [Element("ACCTID", ElementTypeEnum.PROPERTY)]
         public string? AccountId { get; set; }
         // Gets or sets the account type
-        [Element("ACCTTYPE", ElementTypeEnum.PROPERTY)] 
+        [Element("ACCTTYPE", ElementTypeEnum.PROPERTY)]
         public AccountEnum? AccountType { get; set; }
         // Gets or sets the checksum.
-        [Element("ACCTKEY", ElementTypeEnum.PROPERTY)] 
+        [Element("ACCTKEY", ElementTypeEnum.PROPERTY)]
         public string? AccountKey { get; set; }
 
         // Determines whether the specified object is equal to the current object.

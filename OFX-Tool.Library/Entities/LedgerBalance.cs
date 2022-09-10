@@ -8,12 +8,12 @@ namespace RFD.OFXTool.Library.Entities
         //
         // Résumé :
         //     Gets or sets the ledger balance amount.
-        [Element("BALAMT", ElementTypeEnum.PROPERTY)] 
+        [Element("BALAMT", ElementTypeEnum.PROPERTY)]
         public string? BalanceAmount { get; set; }
         //
         // Résumé :
         //     Gets or sets the balance date.
-        [Element("DTASOF", ElementTypeEnum.PROPERTY)] 
+        [Element("DTASOF", ElementTypeEnum.PROPERTY)]
         public string? DateAsOf { get; set; }
 
         // Determines whether the specified object is equal to the current object.

@@ -8,12 +8,12 @@ namespace RFD.OFXTool.Library.Entities.Bank
         //
         // Résumé :
         //     Gets or sets the start date for transaction data.
-        [Element("DTSTART", ElementTypeEnum.PROPERTY)] 
+        [Element("DTSTART", ElementTypeEnum.PROPERTY)]
         public string? StartDate { get; set; }
         //
         // Résumé :
         //     Gets or sets the end date for transaction data.
-        [Element("DTEND", ElementTypeEnum.PROPERTY)] 
+        [Element("DTEND", ElementTypeEnum.PROPERTY)]
         public string? EndDate { get; set; }
         //
         // Résumé :

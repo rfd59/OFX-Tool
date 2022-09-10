@@ -1,5 +1,4 @@
 ﻿using RFD.OFXTool.Library.Attributes;
-using RFD.OFXTool.Library.Core;
 using System.Reflection;
 
 namespace RFD.OFXTool.Library
@@ -30,7 +29,7 @@ namespace RFD.OFXTool.Library
         {
             // This uses C#'s reflection to get the attribute if one exists
             PropertyInfo? propertyInfo = typeof(T).GetProperty(property);
-            return (Element) Attribute.GetCustomAttribute(propertyInfo, typeof(Element), true);
+            return (Element)Attribute.GetCustomAttribute(propertyInfo, typeof(Element), true);
         }
 
         public static Element GetElementClass<T>()

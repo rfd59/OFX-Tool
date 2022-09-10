@@ -32,7 +32,7 @@ namespace RFD.OFXTool.Library.Core.Extract
                     else if (myField == Entity.GetElementProperty<LedgerBalance>(nameof(LedgerBalance.DateAsOf)).Name)
                         Element.DateAsOf = xmlReader.Value;
                     else
-                    throw new InvalidOperationException($"Unexpected value! [{myField}]");
+                        throw new InvalidOperationException($"Unexpected value! [{myField}]");
                 }
             }
         }
