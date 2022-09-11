@@ -4,6 +4,7 @@ using RFD.OFXTool.Library.Entities.Bank;
 using RFD.OFXTool.Library.Entities.Signon;
 using RFD.OFXTool.Library.Enums;
 using System.Collections.Generic;
+using System.IO;
 
 namespace RFD.OFXTool.Library.Core.Tests
 {
@@ -38,6 +39,29 @@ namespace RFD.OFXTool.Library.Core.Tests
             var newOfx= OfxTool.Get(myBuildFile);
 
             Assert.AreEqual<Ofx>(ofx, newOfx);
+        }
+
+        [TestMethod()]
+        [ExpectedException(typeof(OFXToolException))]
+        public void BuildTest_PathNotExist()
+        {
+            var myBuildFile = "/path1/path2/path3/buildTest_PathNotExist.ofx";
+            var ofx = new Ofx();
+
+            // Build the OFX File
+            new Build(ofx, myBuildFile);
+        }
+
+        [TestMethod()]
+        public void BuildTest_Empty()
+        {
+            var myBuildFile = "./buildTest_Empty.ofx";
+            var ofx = new Ofx();
+
+            // Build the OFX File
+            var build = new Build(ofx, myBuildFile);
+
+            Assert.IsTrue(File.Exists(build.OfxFile));
         }
     }
 }
