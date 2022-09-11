@@ -72,9 +72,9 @@ namespace RFD.OFXTool.Library.Core
         private ResponseDocument LoadResponse()
         {
             var response = new ResponseDocument();
+
             // Translating to XML file and parse the XML
             var xml = new ExportToXml(OfxFile);
-
             using (var xmlReader = new XmlTextReader(xml.XmlFile))
             {
                 

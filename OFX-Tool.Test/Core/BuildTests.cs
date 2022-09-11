@@ -13,12 +13,12 @@ namespace RFD.OFXTool.Library.Core.Tests
         [TestMethod()]
         public void BuildTest()
         {
-            var myFile = "./build.ofx";
-            var doc = new ResponseDocument();
+            var myBuildFile = "./buildTest.ofx";
+            var ofx = new Ofx();
 
             var status = new Status() { Code = "0", Severity = SeverityEnum.INFO };
             var sonrs = new SignonResponse() { Language = LanguageEnum.FRA, ServerDate = "20220802000000", Status = status };
-            doc.SignonResponseMessageSetV1 = new SignonResponseMessageSetV1() { SignonResponse = sonrs };
+            ofx.Response.SignonResponseMessageSetV1 = new SignonResponseMessageSetV1() { SignonResponse = sonrs };
 
             var bankacctfrom = new BankAccount() { BankId = "12345", BranchId = "6789", AccountId = "00112233445", AccountType = AccountEnum.CHECKING };
             var stmttrn = new List<StatementTransaction>();
@@ -30,12 +30,14 @@ namespace RFD.OFXTool.Library.Core.Tests
             var stmtrs = new StatementResponse() { Currency = CurrencyEnum.EUR, BankAccountFrom = bankacctfrom, BankTransactionList = banktranslist, LedgerBalance = ledgerbal, AvailableBalance = availbal };
             var stmttrns = new List<StatementTransactionResponse>();
             stmttrns.Add(new StatementTransactionResponse() { TransactionUniqueId = "20220802000000", Status = status, StatementResponse = stmtrs });
-            doc.BankResponseMessageSetV1 = new BankResponseMessageSetV1() { StatementTransactionResponses = stmttrns };
+            ofx.Response.BankResponseMessageSetV1 = new BankResponseMessageSetV1() { StatementTransactionResponses = stmttrns };
 
-            new Build(new Ofx() { Response = doc }, myFile);
+            // Build the OFX File
+            new Build(ofx, myBuildFile);
+            // Load the OFX file builed
+            var newOfx= OfxTool.Get(myBuildFile);
 
-            var newDoc= OfxTool.Get(myFile).Response;
-            Assert.AreEqual<ResponseDocument>(doc, newDoc);
+            Assert.AreEqual<Ofx>(ofx, newOfx);
         }
     }
 }

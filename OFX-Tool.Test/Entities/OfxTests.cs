@@ -13,7 +13,7 @@ namespace RFD.OFXTool.Library.Entities.Tests
             Assert.IsFalse(entity.Equals(null));
             Assert.IsFalse(entity.Equals(new Object()));
             Assert.AreEqual(entity, new Ofx());
-            Assert.AreNotEqual(entity, new Ofx() { Header = new HeaderDocument() });
+            Assert.AreNotEqual(entity, new Ofx() { Response = new ResponseDocument() { SignonResponseMessageSetV1 = new SignonResponseMessageSetV1() } });
         }
 
         [TestMethod()]

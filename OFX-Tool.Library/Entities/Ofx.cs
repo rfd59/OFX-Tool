@@ -2,10 +2,15 @@
 {
     public class Ofx
     {
-        public HeaderDocument? Header { get; set; }
+        public HeaderDocument Header { get; set; }
 
-        public ResponseDocument? Response { get; set; }
+        public ResponseDocument Response { get; set; }
 
+        public Ofx()
+        {
+            Header = new HeaderDocument();
+            Response = new ResponseDocument();
+        }
 
         // Determines whether the specified object is equal to the current object.
         public override bool Equals(object? obj)
