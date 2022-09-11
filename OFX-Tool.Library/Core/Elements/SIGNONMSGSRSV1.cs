@@ -15,7 +15,7 @@ namespace RFD.OFXTool.Library.Core.Elements
         protected override void LoadElement(XmlTextReader xmlReader)
         {
             // SONRS element object
-            if (xmlReader.NodeType == XmlNodeType.Element && xmlReader.Name.Equals(Entity.GetElementClass<SignonResponse>().Name))
+            if (xmlReader.NodeType == XmlNodeType.Element && xmlReader.Name.Equals(Entity.GetElement<SignonResponse>()))
                 _load.SignonResponse = new SONRS().Load(xmlReader);
         }
     }

@@ -8,18 +8,18 @@ namespace RFD.OFXTool.Library.Core.Elements
         protected override void BuildElement(Status doc)
         {
             if (doc.Code != null)
-                _build.AppendLine(BuildToFile.WriteProperty(Entity.GetElementProperty<Status>(nameof(Status.Code)).Name, doc.Code, _level));
+                _build.AppendLine(WriteProperty<Status>(nameof(Status.Code), doc.Code, _level));
             if (doc.Severity != null)
-                _build.AppendLine(BuildToFile.WriteProperty(Entity.GetElementProperty<Status>(nameof(Status.Severity)).Name, doc.Severity.ToString(), _level));
+                _build.AppendLine(WriteProperty<Status>(nameof(Status.Severity), doc.Severity, _level));
         }
 
         protected override void LoadElement(XmlTextReader xmlReader)
         {
             if (xmlReader.NodeType == XmlNodeType.Text)
             {
-                if (_field == Entity.GetElementProperty<Status>(nameof(Status.Code)).Name)
+                if (_field == Entity.GetElement<Status>(nameof(Status.Code)))
                     _load.Code = xmlReader.Value;
-                else if (_field == Entity.GetElementProperty<Status>(nameof(Status.Severity)).Name)
+                else if (_field == Entity.GetElement<Status>(nameof(Status.Severity)))
                     _load.Severity = (SeverityEnum)Enum.Parse(typeof(SeverityEnum), xmlReader.Value);
                 else
                     throw new InvalidOperationException($"Unexpected value! [{_field}]");

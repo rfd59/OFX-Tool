@@ -17,9 +17,9 @@ namespace RFD.OFXTool.Library.Core.Elements
             _level = level;
 
             _build = new StringBuilder();
-            _build.AppendLine(BuildToFile.WriteStartObject(Entity.GetElementClass<T>().Name, _level));
+            _build.AppendLine(WriteStartObject<T>(_level));
             BuildElement(doc);
-            _build.AppendLine(BuildToFile.WriteEndObject(Entity.GetElementClass<T>().Name, _level));
+            _build.AppendLine(WriteEndObject<T>(_level));
 
             return _build;
         }
@@ -35,10 +35,11 @@ namespace RFD.OFXTool.Library.Core.Elements
 
             while (xmlReader.Read())
             {
-                // End of this element object
-                if (xmlReader.NodeType == XmlNodeType.EndElement && xmlReader.Name.Equals(Entity.GetElementClass<T>().Name))
+                // End of the element
+                if (xmlReader.NodeType == XmlNodeType.EndElement && xmlReader.Name.Equals(Entity.GetElement<T>()))
                     break;
 
+                // Get the XML field name
                 if (xmlReader.NodeType == XmlNodeType.Element)
                     _field = xmlReader.Name;
 
@@ -49,5 +50,32 @@ namespace RFD.OFXTool.Library.Core.Elements
         }
 
         protected abstract void LoadElement(XmlTextReader xmlReader);
+
+
+        protected string WriteStartObject<O>(int level = 0)
+        {
+            return $"{tabs(level)}<{Entity.GetElement<O>()}>";
+        }
+
+        protected string WriteEndObject<O>(int level = 0)
+        {
+            return $"{tabs(level)}</{Entity.GetElement<O>()}>";
+        }
+
+        protected string WriteProperty<O>(string property, Object value, int level = 0)
+        {
+            return $"{tabs(level)}\t<{Entity.GetElement<O>(property)}>{value.ToString()}";
+        }
+
+        private string tabs(int level)
+        {
+            var t = "";
+            for (int i = 0; i < level; i++)
+            {
+                t += "\t";
+            }
+
+            return t;
+        }
     }
 }
