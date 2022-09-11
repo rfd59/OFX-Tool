@@ -13,6 +13,7 @@ namespace RFD.OFXTool.Library.Core.Tests
         [TestMethod()]
         public void BuildToFileTest()
         {
+            var myFile = "./build.ofx";
             var doc = new ResponseDocument();
 
             var status = new Status() { Code = "0", Severity = SeverityEnum.INFO };
@@ -31,7 +32,10 @@ namespace RFD.OFXTool.Library.Core.Tests
             stmttrns.Add(new StatementTransactionResponse() { TransactionUniqueId = "20220802000000", Status = status, StatementResponse = stmtrs });
             doc.BankResponseMessageSetV1 = new BankResponseMessageSetV1() { StatementTransactionResponses = stmttrns };
 
-            new BuildToFile(doc, "./build.ofx");
+            new BuildToFile(doc, myFile);
+
+            var newDoc= OFXTool.GetExtract(myFile);
+            Assert.AreEqual<ResponseDocument>(doc, newDoc);
         }
     }
 }
