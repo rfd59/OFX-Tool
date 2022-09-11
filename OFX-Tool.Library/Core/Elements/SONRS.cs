@@ -20,9 +20,7 @@ namespace RFD.OFXTool.Library.Core.Elements
         {
             // STATUS element object
             if (xmlReader.NodeType == XmlNodeType.Element && xmlReader.Name.Equals(Entity.GetElement<Status>()))
-            {
                 _load.Status = new STATUS().Load(xmlReader);
-            }
 
             if (xmlReader.NodeType == XmlNodeType.Text)
             {
