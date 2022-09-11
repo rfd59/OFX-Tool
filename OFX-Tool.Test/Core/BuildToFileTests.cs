@@ -1,14 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using RFD.OFXTool.Library.Core;
 using RFD.OFXTool.Library.Entities;
 using RFD.OFXTool.Library.Entities.Bank;
 using RFD.OFXTool.Library.Entities.Signon;
 using RFD.OFXTool.Library.Enums;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RFD.OFXTool.Library.Core.Tests
 {
@@ -34,7 +29,7 @@ namespace RFD.OFXTool.Library.Core.Tests
             var stmtrs = new StatementResponse() { Currency = CurrencyEnum.EUR, BankAccountFrom = bankacctfrom, BankTransactionList = banktranslist, LedgerBalance = ledgerbal, AvailableBalance = availbal };
             var stmttrns = new List<StatementTransactionResponse>();
             stmttrns.Add(new StatementTransactionResponse() { TransactionUniqueId = "20220802000000", Status = status, StatementResponse = stmtrs });
-            doc.BankResponseMessageSetV1 = new BankResponseMessageSetV1() { StatementTransactionResponses = stmttrns};
+            doc.BankResponseMessageSetV1 = new BankResponseMessageSetV1() { StatementTransactionResponses = stmttrns };
 
             new BuildToFile(doc, "./build.ofx");
         }

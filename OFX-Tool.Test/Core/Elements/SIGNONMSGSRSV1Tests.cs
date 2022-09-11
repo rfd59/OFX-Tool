@@ -1,7 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RFD.OFXTool.Library.Entities;
 using RFD.OFXTool.Library.Entities.Signon;
-using RFD.OFXTool.Library.Enums;
 using System;
 using System.IO;
 using System.Xml;
@@ -14,7 +13,7 @@ namespace RFD.OFXTool.Library.Core.Elements.Tests
         [TestMethod()]
         public void BuildTest()
         {
-            var doc = new SignonResponseMessageSetV1() { SignonResponse = new SignonResponse()};
+            var doc = new SignonResponseMessageSetV1() { SignonResponse = new SignonResponse() };
             var expected = $"<SIGNONMSGSRSV1><SONRS></SONRS></SIGNONMSGSRSV1>";
 
             BuildAssert(doc, expected);

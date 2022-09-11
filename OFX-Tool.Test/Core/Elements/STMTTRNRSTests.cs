@@ -1,8 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RFD.OFXTool.Library.Entities;
 using RFD.OFXTool.Library.Entities.Bank;
-using RFD.OFXTool.Library.Entities.Signon;
-using RFD.OFXTool.Library.Enums;
 using System;
 using System.IO;
 using System.Xml;
@@ -15,7 +13,7 @@ namespace RFD.OFXTool.Library.Core.Elements.Tests
         [TestMethod()]
         public void BuildTest()
         {
-            var doc = new StatementTransactionResponse() { TransactionUniqueId="789654123" };
+            var doc = new StatementTransactionResponse() { TransactionUniqueId = "789654123" };
             var expected = $"<STMTTRNRS><TRNUID>{doc.TransactionUniqueId}</STMTTRNRS>";
 
             BuildAssert(doc, expected);
@@ -24,7 +22,7 @@ namespace RFD.OFXTool.Library.Core.Elements.Tests
         [TestMethod()]
         public void BuildTest_Full()
         {
-            var doc = new StatementTransactionResponse() { TransactionUniqueId = "789654123", ClientCookie="azertyuiop", StatementResponse=new StatementResponse(), Status= new Status() };
+            var doc = new StatementTransactionResponse() { TransactionUniqueId = "789654123", ClientCookie = "azertyuiop", StatementResponse = new StatementResponse(), Status = new Status() };
             var expected = $"<STMTTRNRS><TRNUID>{doc.TransactionUniqueId}<CLTCOOKIE>{doc.ClientCookie}<STATUS></STATUS><STMTRS></STMTRS></STMTTRNRS>";
 
             BuildAssert(doc, expected);

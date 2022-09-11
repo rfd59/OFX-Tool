@@ -1,8 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using RFD.OFXTool.Library.Entities;
 using RFD.OFXTool.Library.Entities.Bank;
-using RFD.OFXTool.Library.Entities.Signon;
-using RFD.OFXTool.Library.Enums;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -16,7 +13,7 @@ namespace RFD.OFXTool.Library.Core.Elements.Tests
         [TestMethod()]
         public void BuildTest()
         {
-            var doc = new BankTransactionList() { StartDate = "20220911000000", EndDate= "20230911000000" };
+            var doc = new BankTransactionList() { StartDate = "20220911000000", EndDate = "20230911000000" };
             var expected = $"<BANKTRANLIST><DTSTART>{doc.StartDate}<DTEND>{doc.EndDate}</BANKTRANLIST>";
 
             BuildAssert(doc, expected);
@@ -28,7 +25,7 @@ namespace RFD.OFXTool.Library.Core.Elements.Tests
             var st = new List<StatementTransaction>();
             st.Add(new StatementTransaction());
 
-            var doc = new BankTransactionList() { StartDate = "20220911000000", EndDate = "20230911000000", StatementTransactions= st };
+            var doc = new BankTransactionList() { StartDate = "20220911000000", EndDate = "20230911000000", StatementTransactions = st };
             var expected = $"<BANKTRANLIST><DTSTART>{doc.StartDate}<DTEND>{doc.EndDate}<STMTTRN></STMTTRN></BANKTRANLIST>";
 
             BuildAssert(doc, expected);

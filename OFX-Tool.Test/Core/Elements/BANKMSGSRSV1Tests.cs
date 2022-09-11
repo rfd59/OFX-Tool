@@ -1,8 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RFD.OFXTool.Library.Entities;
 using RFD.OFXTool.Library.Entities.Bank;
-using RFD.OFXTool.Library.Entities.Signon;
-using RFD.OFXTool.Library.Enums;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -19,7 +17,7 @@ namespace RFD.OFXTool.Library.Core.Elements.Tests
             var str = new List<StatementTransactionResponse>();
             str.Add(new StatementTransactionResponse());
 
-            var doc = new BankResponseMessageSetV1() { StatementTransactionResponses = str};
+            var doc = new BankResponseMessageSetV1() { StatementTransactionResponses = str };
             var expected = $"<BANKMSGSRSV1><STMTTRNRS></STMTTRNRS></BANKMSGSRSV1>";
 
             BuildAssert(doc, expected);

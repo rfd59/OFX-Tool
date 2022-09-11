@@ -1,6 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RFD.OFXTool.Library.Entities;
-using RFD.OFXTool.Library.Enums;
 using System;
 using System.IO;
 using System.Xml;
@@ -13,7 +12,7 @@ namespace RFD.OFXTool.Library.Core.Elements.Tests
         [TestMethod()]
         public void BuildTest()
         {
-            var doc = new LedgerBalance() { DateAsOf="20220911000000" };
+            var doc = new LedgerBalance() { DateAsOf = "20220911000000" };
             var expected = $"<LEDGERBAL><DTASOF>{doc.DateAsOf}</LEDGERBAL>";
 
             BuildAssert(doc, expected);
@@ -22,7 +21,7 @@ namespace RFD.OFXTool.Library.Core.Elements.Tests
         [TestMethod()]
         public void BuildTest_Full()
         {
-            var doc = new LedgerBalance() { DateAsOf = "20220911000000", BalanceAmount="0.00" };
+            var doc = new LedgerBalance() { DateAsOf = "20220911000000", BalanceAmount = "0.00" };
             var expected = $"<LEDGERBAL><BALAMT>{doc.BalanceAmount}<DTASOF>{doc.DateAsOf}</LEDGERBAL>";
 
             BuildAssert(doc, expected);
@@ -50,7 +49,7 @@ namespace RFD.OFXTool.Library.Core.Elements.Tests
         [TestMethod()]
         public void LoadTest()
         {
-            var expected = new LedgerBalance() { BalanceAmount="100.00" };
+            var expected = new LedgerBalance() { BalanceAmount = "100.00" };
             var xml = $"<LEDGERBAL><BALAMT>{ expected.BalanceAmount}</BALAMT></LEDGERBAL>";
 
             LoadAssert(xml, expected);
@@ -59,7 +58,7 @@ namespace RFD.OFXTool.Library.Core.Elements.Tests
         [TestMethod()]
         public void LoadTest_Full()
         {
-            var expected = new LedgerBalance() { BalanceAmount = "100.00", DateAsOf="20220909123456" };
+            var expected = new LedgerBalance() { BalanceAmount = "100.00", DateAsOf = "20220909123456" };
             var xml = $"<LEDGERBAL><BALAMT>{ expected.BalanceAmount}</BALAMT><DTASOF>{ expected.DateAsOf}</DTASOF></LEDGERBAL>";
 
             LoadAssert(xml, expected);

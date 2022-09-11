@@ -1,5 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using RFD.OFXTool.Library.Entities;
 using RFD.OFXTool.Library.Entities.Bank;
 using RFD.OFXTool.Library.Enums;
 using System;
@@ -14,7 +13,7 @@ namespace RFD.OFXTool.Library.Core.Elements.Tests
         [TestMethod()]
         public void BuildTest()
         {
-            var doc = new StatementTransaction() { TransactionType=TransactionEnum.CREDIT, PostedDate="20220602", UserDate="20220606", TransactionAmount="123.45",FinancialInstitutionTransactionId="AZ3ERT5GFD", Memo="VIR ..." };
+            var doc = new StatementTransaction() { TransactionType = TransactionEnum.CREDIT, PostedDate = "20220602", UserDate = "20220606", TransactionAmount = "123.45", FinancialInstitutionTransactionId = "AZ3ERT5GFD", Memo = "VIR ..." };
             var expected = $"<STMTTRN><TRNTYPE>{doc.TransactionType}<DTUSER>{doc.UserDate}<DTPOSTED>{doc.PostedDate}<TRNAMT>{doc.TransactionAmount}<FITID>{doc.FinancialInstitutionTransactionId}<MEMO>{doc.Memo}</STMTTRN>";
 
             BuildAssert(doc, expected);
@@ -23,7 +22,7 @@ namespace RFD.OFXTool.Library.Core.Elements.Tests
         [TestMethod()]
         public void BuildTest_Full()
         {
-            var doc = new StatementTransaction() { TransactionType = TransactionEnum.CREDIT, PostedDate = "20220602", UserDate = "20220606", TransactionAmount = "123.45", FinancialInstitutionTransactionId = "AZ3ERT5GFD", Memo = "VIR ...", CheckNumber="123456", AvailableDate="20220123", CorrectFinancialInstitutionTransactionId="987654", ExtendedName="azerty", Name="MyName", PayeeId="456321", ReferenceNumber="29716", ServerTransactionId="31796", StandardIndustrialCode="0001" };
+            var doc = new StatementTransaction() { TransactionType = TransactionEnum.CREDIT, PostedDate = "20220602", UserDate = "20220606", TransactionAmount = "123.45", FinancialInstitutionTransactionId = "AZ3ERT5GFD", Memo = "VIR ...", CheckNumber = "123456", AvailableDate = "20220123", CorrectFinancialInstitutionTransactionId = "987654", ExtendedName = "azerty", Name = "MyName", PayeeId = "456321", ReferenceNumber = "29716", ServerTransactionId = "31796", StandardIndustrialCode = "0001" };
             var expected = $"<STMTTRN><TRNTYPE>{doc.TransactionType}<DTUSER>{doc.UserDate}<DTPOSTED>{doc.PostedDate}<TRNAMT>{doc.TransactionAmount}<FITID>{doc.FinancialInstitutionTransactionId}<CHECKNUM>{doc.CheckNumber}<MEMO>{doc.Memo}<NAME>{doc.Name}<PAYEEID>{doc.PayeeId}<SIC>{doc.StandardIndustrialCode}<EXTDNAME>{doc.ExtendedName}<REFNUM>{doc.ReferenceNumber}<SRVRTID>{doc.ServerTransactionId}<CORRECTFITID>{doc.CorrectFinancialInstitutionTransactionId}<DTAVAIL>{doc.AvailableDate}</STMTTRN>";
 
             BuildAssert(doc, expected);

@@ -14,7 +14,7 @@ namespace RFD.OFXTool.Library.Core.Elements.Tests
         [TestMethod()]
         public void BuildTest()
         {
-            var doc = new SignonResponse() { ServerDate = "20220911000000", Language= LanguageEnum.FRA };
+            var doc = new SignonResponse() { ServerDate = "20220911000000", Language = LanguageEnum.FRA };
             var expected = $"<SONRS><DTSERVER>{doc.ServerDate}<LANGUAGE>{doc.Language}</SONRS>";
 
             BuildAssert(doc, expected);

@@ -13,7 +13,7 @@ namespace RFD.OFXTool.Library.Core.Elements.Tests
         [TestMethod()]
         public void BuildTest()
         {
-            var doc = new Status() { Code="2", Severity= SeverityEnum.ERROR };
+            var doc = new Status() { Code = "2", Severity = SeverityEnum.ERROR };
             var expected = $"<STATUS><CODE>{doc.Code}<SEVERITY>{doc.Severity}</STATUS>";
 
             BuildAssert(doc, expected);

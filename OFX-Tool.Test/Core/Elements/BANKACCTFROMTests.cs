@@ -1,5 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using RFD.OFXTool.Library.Entities;
 using RFD.OFXTool.Library.Entities.Bank;
 using RFD.OFXTool.Library.Enums;
 using System;
@@ -14,7 +13,7 @@ namespace RFD.OFXTool.Library.Core.Elements.Tests
         [TestMethod()]
         public void BuildTest()
         {
-            var doc = new BankAccount() { BankId="12345", BranchId="67890", AccountId="987456321", AccountType= AccountEnum.MONEYMRKT };
+            var doc = new BankAccount() { BankId = "12345", BranchId = "67890", AccountId = "987456321", AccountType = AccountEnum.MONEYMRKT };
             var expected = $"<BANKACCTFROM><BANKID>{doc.BankId}<BRANCHID>{doc.BranchId}<ACCTID>{doc.AccountId}<ACCTTYPE>{doc.AccountType}</BANKACCTFROM>";
 
             BuildAssert(doc, expected);
@@ -23,7 +22,7 @@ namespace RFD.OFXTool.Library.Core.Elements.Tests
         [TestMethod()]
         public void BuildTest_Full()
         {
-            var doc = new BankAccount() { BankId = "12345", BranchId = "67890", AccountId = "987456321", AccountType = AccountEnum.MONEYMRKT, AccountKey="321456987" };
+            var doc = new BankAccount() { BankId = "12345", BranchId = "67890", AccountId = "987456321", AccountType = AccountEnum.MONEYMRKT, AccountKey = "321456987" };
             var expected = $"<BANKACCTFROM><BANKID>{doc.BankId}<BRANCHID>{doc.BranchId}<ACCTID>{doc.AccountId}<ACCTTYPE>{doc.AccountType}<ACCTKEY>{doc.AccountKey}</BANKACCTFROM>";
 
             BuildAssert(doc, expected);

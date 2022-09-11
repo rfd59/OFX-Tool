@@ -1,7 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RFD.OFXTool.Library.Entities;
 using RFD.OFXTool.Library.Entities.Bank;
-using RFD.OFXTool.Library.Entities.Signon;
 using RFD.OFXTool.Library.Enums;
 using System;
 using System.IO;
@@ -15,7 +14,7 @@ namespace RFD.OFXTool.Library.Core.Elements.Tests
         [TestMethod()]
         public void BuildTest()
         {
-            var doc = new StatementResponse() { Currency= CurrencyEnum.USD};
+            var doc = new StatementResponse() { Currency = CurrencyEnum.USD };
             var expected = $"<STMTRS><CURDEF>{doc.Currency}</STMTRS>";
 
             BuildAssert(doc, expected);
@@ -24,7 +23,7 @@ namespace RFD.OFXTool.Library.Core.Elements.Tests
         [TestMethod()]
         public void BuildTest_Full()
         {
-            var doc = new StatementResponse() { Currency = CurrencyEnum.USD, AvailableBalance= new AvailableBalance(), BankAccountFrom= new BankAccount(), LedgerBalance=new LedgerBalance(), BankTransactionList =new BankTransactionList() };
+            var doc = new StatementResponse() { Currency = CurrencyEnum.USD, AvailableBalance = new AvailableBalance(), BankAccountFrom = new BankAccount(), LedgerBalance = new LedgerBalance(), BankTransactionList = new BankTransactionList() };
             var expected = $"<STMTRS><CURDEF>{doc.Currency}<BANKACCTFROM></BANKACCTFROM><BANKTRANLIST></BANKTRANLIST><LEDGERBAL></LEDGERBAL><AVAILBAL></AVAILBAL></STMTRS>";
 
             BuildAssert(doc, expected);
