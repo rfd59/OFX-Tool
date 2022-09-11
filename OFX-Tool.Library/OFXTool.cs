@@ -8,7 +8,7 @@ namespace RFD.OFXTool.Library
         public void Build(Ofx ofx, string ofxTargetFile)
         {
             if (ofx != null)
-                throw new NotImplementedException();
+                new Build(ofx, ofxTargetFile);
             else
                 throw new OFXToolException($"The OFX object is null!");
         }
