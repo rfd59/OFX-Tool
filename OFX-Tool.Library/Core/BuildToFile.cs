@@ -1,4 +1,5 @@
 ﻿using RFD.OFXTool.Library.Core.Build;
+using RFD.OFXTool.Library.Core.Elements;
 using RFD.OFXTool.Library.Entities;
 using System;
 using System.Collections.Generic;
@@ -30,7 +31,7 @@ namespace RFD.OFXTool.Library.Core
 
             //
             if (OfxDocument.SignonResponseMessageSetV1 != null)
-                sw.WriteLine(new BuildSIGNONMSGSRSV1(OfxDocument.SignonResponseMessageSetV1).Element);
+                sw.WriteLine(new SIGNONMSGSRSV1().Build(OfxDocument.SignonResponseMessageSetV1));
 
             //
             if (OfxDocument.BankResponseMessageSetV1 != null)

@@ -1,4 +1,5 @@
-﻿using RFD.OFXTool.Library.Core.Extract;
+﻿using RFD.OFXTool.Library.Core.Elements;
+using RFD.OFXTool.Library.Core.Extract;
 using RFD.OFXTool.Library.Entities;
 using System.Xml;
 
@@ -30,7 +31,7 @@ namespace RFD.OFXTool.Library.Core
                     //
                     if (xmlReader.NodeType == XmlNodeType.Element && xmlReader.Name.Equals(Entity.GetElementClass<SignonResponseMessageSetV1>().Name))
                     {
-                        OfxDocument.SignonResponseMessageSetV1 = new ExtractSIGNONMSGSRSV1(xmlReader).Element;
+                        OfxDocument.SignonResponseMessageSetV1 = new SIGNONMSGSRSV1().Load(xmlReader);
                     }
 
                     //
