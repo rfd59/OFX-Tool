@@ -37,7 +37,7 @@ namespace RFD.OFXTool.Library.Core
                     //
                     if (xmlReader.NodeType == XmlNodeType.Element && xmlReader.Name.Equals(Entity.GetElementClass<BankResponseMessageSetV1>().Name))
                     {
-                        OfxDocument.BankResponseMessageSetV1 = new ExtractBANKMSGSRSV1(xmlReader).Element;
+                        OfxDocument.BankResponseMessageSetV1 = new BANKMSGSRSV1().Load(xmlReader);
                     }
                 }
             }
