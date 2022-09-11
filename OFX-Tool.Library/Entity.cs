@@ -1,4 +1,5 @@
 ﻿using RFD.OFXTool.Library.Attributes;
+using RFD.OFXTool.Library.Entities;
 using System.Reflection;
 
 namespace RFD.OFXTool.Library
@@ -26,16 +27,26 @@ namespace RFD.OFXTool.Library
             }
         }
 
+        public static string GetHeader(string property)
+        {
+            return ((Header)GetAttribute<Header, HeaderDocument>(property)).Name;
+        }
+
         public static string GetElement<T>(string property)
         {
-            // This uses C#'s reflection to get the attribute if one exists
-            PropertyInfo? propertyInfo = typeof(T).GetProperty(property);
-            return ((Element)Attribute.GetCustomAttribute(propertyInfo, typeof(Element), true)).Name;
+            return ((Element)GetAttribute<Element, T>(property)).Name;
         }
 
         public static string GetElement<T>()
         {
             return ((Element)Attribute.GetCustomAttribute(typeof(T), typeof(Element), true)).Name;
+        }
+
+        private  static Attribute GetAttribute<A,T>(string property)
+        {
+            // This uses C#'s reflection to get the attribute if one exists
+            PropertyInfo? propertyInfo = typeof(T).GetProperty(property);
+            return Attribute.GetCustomAttribute(propertyInfo, typeof(A), true);
         }
 
     }

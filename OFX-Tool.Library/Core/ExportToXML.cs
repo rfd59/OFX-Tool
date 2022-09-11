@@ -2,12 +2,12 @@
 
 namespace RFD.OFXTool.Library.Core
 {
-    public class ExportToXml
+    internal class ExportToXml
     {
-        public string XmlFile { get; }
-        public string OfxFile { get; }
+        internal string XmlFile { get; }
+        internal string OfxFile { get; }
 
-        public ExportToXml(string ofxSourceFile) : this(ofxSourceFile, ofxSourceFile + ".xml")
+        internal ExportToXml(string ofxSourceFile) : this(ofxSourceFile, ofxSourceFile + ".xml")
         { }
 
         /// <summary>
@@ -15,7 +15,7 @@ namespace RFD.OFXTool.Library.Core
         /// </summary>
         /// <param name="ofxSourceFile">Path of OFX source file</param>
         /// <param name="xmlNewFile">Path of the XML file, internally generated.</param>
-        public ExportToXml(string ofxSourceFile, string xmlNewFile)
+        internal ExportToXml(string ofxSourceFile, string xmlNewFile)
         {
             OfxFile = ofxSourceFile;
             XmlFile = xmlNewFile;

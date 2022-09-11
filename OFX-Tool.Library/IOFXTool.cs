@@ -2,8 +2,10 @@
 
 namespace RFD.OFXTool.Library
 {
-    public interface IOFXTool
+    public interface IOfxTool
     {
-        ResponseDocument Extract(string ofxSourceFile);
+        public Ofx Load(string ofxSourceFile);
+
+        public void Build(Ofx ofx, string ofxTargetFile);
     }
 }

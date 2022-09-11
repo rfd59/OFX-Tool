@@ -3,20 +3,33 @@ using RFD.OFXTool.Library.Entities;
 
 namespace RFD.OFXTool.Library
 {
-    public class OFXTool : IOFXTool
+    public class OfxTool : IOfxTool
     {
-        public static ResponseDocument GetExtract(string ofxSourceFile)
+        public void Build(Ofx ofx, string ofxTargetFile)
         {
-            return new OFXTool().Extract(ofxSourceFile);
+            if (ofx != null)
+                throw new NotImplementedException();
+            else
+                throw new OFXToolException($"The OFX object is null!");
         }
 
-        public ResponseDocument Extract(string ofxSourceFile)
+        public Ofx Load(string ofxSourceFile)
         {
-            // Translating to XML file
-            var xml = new ExportToXml(ofxSourceFile);
-
-            // Load the XML file to a OFX document
-            return new LoadFromXml(xml.XmlFile).OfxDocument;
+            if (File.Exists(ofxSourceFile))
+                return new Load(ofxSourceFile).Ofx;
+            else
+                throw new OFXToolException($"The OFX file '{ofxSourceFile}' doesn't exist!");
         }
+
+        public static Ofx Get(string ofxSourceFile)
+        {
+            return new OfxTool().Load(ofxSourceFile);
+        }
+
+        public static void Set(Ofx ofx, string ofxTargetFile)
+        {
+            new OfxTool().Build(ofx, ofxTargetFile);
+        }
+
     }
 }

@@ -8,10 +8,10 @@ using System.Collections.Generic;
 namespace RFD.OFXTool.Library.Core.Tests
 {
     [TestClass()]
-    public class BuildToFileTests
+    public class BuildTests
     {
         [TestMethod()]
-        public void BuildToFileTest()
+        public void BuildTest()
         {
             var myFile = "./build.ofx";
             var doc = new ResponseDocument();
@@ -32,9 +32,9 @@ namespace RFD.OFXTool.Library.Core.Tests
             stmttrns.Add(new StatementTransactionResponse() { TransactionUniqueId = "20220802000000", Status = status, StatementResponse = stmtrs });
             doc.BankResponseMessageSetV1 = new BankResponseMessageSetV1() { StatementTransactionResponses = stmttrns };
 
-            new BuildToFile(doc, myFile);
+            new Build(new Ofx() { Response = doc }, myFile);
 
-            var newDoc= OFXTool.GetExtract(myFile);
+            var newDoc= OfxTool.Get(myFile).Response;
             Assert.AreEqual<ResponseDocument>(doc, newDoc);
         }
     }
