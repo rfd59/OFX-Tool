@@ -59,7 +59,7 @@ namespace RFD.OFXTool.Library.Core.Elements
                     _load.CheckNumber = xmlReader.Value;
                 else if (_field == Entity.GetElement<StatementTransaction>(nameof(StatementTransaction.Memo)))
                     _load.Memo = xmlReader.Value;
-                else if (_field == Entity.GetElement<StatementTransaction>(nameof(StatementTransaction)))
+                else if (_field == Entity.GetElement<StatementTransaction>(nameof(StatementTransaction.Name)))
                     _load.Name = xmlReader.Value;
                 else if (_field == Entity.GetElement<StatementTransaction>(nameof(StatementTransaction.PayeeId)))
                     _load.PayeeId = xmlReader.Value;
