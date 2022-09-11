@@ -34,9 +34,8 @@ namespace RFD.OFXTool.Library.Core
 
             //
             if (OfxDocument.BankResponseMessageSetV1 != null)
-                sw.WriteLine(OfxDocument.BankResponseMessageSetV1);
-            //new BuildBANKMSGSRSV1().Element;
-
+                sw.WriteLine(new BuildBANKMSGSRSV1(OfxDocument.BankResponseMessageSetV1).Element);
+           
             sw.WriteLine(WriteEndObject(Entity.GetElementClass<ResponseDocument>().Name));
             sw.Close();
 
