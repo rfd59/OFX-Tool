@@ -34,10 +34,11 @@ namespace RFD.OFXTool.Library.Core.Tests
             ofx.Response.BankResponseMessageSetV1 = new BankResponseMessageSetV1() { StatementTransactionResponses = stmttrns };
 
             // Build the OFX File
-            new Build(ofx, myBuildFile);
+            var build = new Build(ofx, myBuildFile);
             // Load the OFX file builed
             var newOfx= OfxTool.Get(myBuildFile);
 
+            Assert.AreEqual(ofx, build.Ofx);
             Assert.AreEqual<Ofx>(ofx, newOfx);
         }
 
