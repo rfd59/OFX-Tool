@@ -1,5 +1,4 @@
-﻿using RFD.OFXTool.Library.Core.Elements;
-using RFD.OFXTool.Library.Entities;
+﻿using RFD.OFXTool.Library.Entities;
 using RFD.OFXTool.Library.Entities.Bank;
 using System.Xml;
 

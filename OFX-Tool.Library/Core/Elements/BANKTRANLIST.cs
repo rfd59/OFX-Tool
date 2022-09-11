@@ -1,6 +1,4 @@
-﻿using RFD.OFXTool.Library.Entities;
-using RFD.OFXTool.Library.Entities.Bank;
-using RFD.OFXTool.Library.Entities.Signon;
+﻿using RFD.OFXTool.Library.Entities.Bank;
 using System.Xml;
 
 namespace RFD.OFXTool.Library.Core.Elements
@@ -23,7 +21,7 @@ namespace RFD.OFXTool.Library.Core.Elements
         protected override void LoadElement(XmlTextReader xmlReader)
         {
             // STMTTRN element object
-            if (xmlReader.NodeType == XmlNodeType.Element && xmlReader.Name.Equals(Entity.GetElementClass<StatementTransaction>().Name))
+            if (xmlReader.NodeType == XmlNodeType.Element && xmlReader.Name.Equals(Entity.GetElement<StatementTransaction>()))
             {
                 if (_load.StatementTransactions == null)
                 {

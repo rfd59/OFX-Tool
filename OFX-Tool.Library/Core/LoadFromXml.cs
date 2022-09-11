@@ -1,5 +1,4 @@
 ﻿using RFD.OFXTool.Library.Core.Elements;
-using RFD.OFXTool.Library.Core.Extract;
 using RFD.OFXTool.Library.Entities;
 using System.Xml;
 
@@ -29,13 +28,13 @@ namespace RFD.OFXTool.Library.Core
                 while (xmlReader.Read())
                 {
                     //
-                    if (xmlReader.NodeType == XmlNodeType.Element && xmlReader.Name.Equals(Entity.GetElementClass<SignonResponseMessageSetV1>().Name))
+                    if (xmlReader.NodeType == XmlNodeType.Element && xmlReader.Name.Equals(Entity.GetElement<SignonResponseMessageSetV1>()))
                     {
                         OfxDocument.SignonResponseMessageSetV1 = new SIGNONMSGSRSV1().Load(xmlReader);
                     }
 
                     //
-                    if (xmlReader.NodeType == XmlNodeType.Element && xmlReader.Name.Equals(Entity.GetElementClass<BankResponseMessageSetV1>().Name))
+                    if (xmlReader.NodeType == XmlNodeType.Element && xmlReader.Name.Equals(Entity.GetElement<BankResponseMessageSetV1>()))
                     {
                         OfxDocument.BankResponseMessageSetV1 = new BANKMSGSRSV1().Load(xmlReader);
                     }

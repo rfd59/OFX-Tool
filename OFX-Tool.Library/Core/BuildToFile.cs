@@ -1,11 +1,5 @@
-﻿using RFD.OFXTool.Library.Core.Build;
-using RFD.OFXTool.Library.Core.Elements;
+﻿using RFD.OFXTool.Library.Core.Elements;
 using RFD.OFXTool.Library.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RFD.OFXTool.Library.Core
 {
@@ -27,7 +21,7 @@ namespace RFD.OFXTool.Library.Core
         {
             // Writing data into target file
             StreamWriter sw = File.CreateText(OfxFile);
-            sw.WriteLine(WriteStartObject(Entity.GetElementClass<ResponseDocument>().Name));
+            sw.WriteLine($"<{Entity.GetElement<ResponseDocument>()}>");
 
             //
             if (OfxDocument.SignonResponseMessageSetV1 != null)
@@ -36,34 +30,10 @@ namespace RFD.OFXTool.Library.Core
             //
             if (OfxDocument.BankResponseMessageSetV1 != null)
                 sw.WriteLine(new BANKMSGSRSV1().Build(OfxDocument.BankResponseMessageSetV1));
-           
-            sw.WriteLine(WriteEndObject(Entity.GetElementClass<ResponseDocument>().Name));
+
+            sw.WriteLine($"</{Entity.GetElement<ResponseDocument>()}>");
             sw.Close();
 
-        }
-
-        public static string WriteStartObject(string name, int level=0)
-        {
-            return $"{tabs(level)}<{name}>";
-        }
-        public static string WriteEndObject(string name, int level = 0)
-        {
-            return $"{tabs(level)}</{name}>";
-        }
-        public static string WriteProperty(string name, string value, int level = 0)
-        {
-            return $"{tabs(level)}\t<{name}>{value}";
-        }
-
-        private static string tabs(int level)
-        {
-            var t = "";
-            for (int i = 0; i < level; i++)
-            {
-                t += "\t";
-            }
-
-            return t;
         }
     }
 }

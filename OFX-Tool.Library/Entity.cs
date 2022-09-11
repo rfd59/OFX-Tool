@@ -25,17 +25,6 @@ namespace RFD.OFXTool.Library
 
             }
         }
-        public static Element GetElementProperty<T>(string property)
-        {
-            // This uses C#'s reflection to get the attribute if one exists
-            PropertyInfo? propertyInfo = typeof(T).GetProperty(property);
-            return (Element)Attribute.GetCustomAttribute(propertyInfo, typeof(Element), true);
-        }
-
-        public static Element GetElementClass<T>()
-        {
-            return (Element)Attribute.GetCustomAttribute(typeof(T), typeof(Element), true);
-        }
 
         public static string GetElement<T>(string property)
         {
