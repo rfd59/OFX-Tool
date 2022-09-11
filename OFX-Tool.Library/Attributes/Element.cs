@@ -4,12 +4,10 @@
     public class Element : Attribute
     {
         public string Name { get; }
-        public ElementTypeEnum Type { get; }
 
-        public Element(string name, ElementTypeEnum type)
+        public Element(string name)
         {
             Name = name;
-            Type = type;
         }
     }
 }

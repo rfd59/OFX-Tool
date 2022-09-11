@@ -3,7 +3,7 @@ using RFD.OFXTool.Library.Entities.Signon;
 
 namespace RFD.OFXTool.Library.Entities
 {
-    [Element("SIGNONMSGSRSV1", ElementTypeEnum.CLASS)]
+    [Element("SIGNONMSGSRSV1")]
     public class SignonResponseMessageSetV1
     {
         public SignonResponse? SignonResponse { get; set; }

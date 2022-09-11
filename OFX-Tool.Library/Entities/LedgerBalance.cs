@@ -2,7 +2,7 @@
 
 namespace RFD.OFXTool.Library.Entities
 {
-    [Element("LEDGERBAL", ElementTypeEnum.CLASS)]
+    [Element("LEDGERBAL")]
     public class LedgerBalance : AbstractBalance
     {
 

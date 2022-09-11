@@ -2,7 +2,7 @@
 
 namespace RFD.OFXTool.Library.Entities
 {
-    [Element("AVAILBAL", ElementTypeEnum.CLASS)]
+    [Element("AVAILBAL")]
     public class AvailableBalance : AbstractBalance
     {
 

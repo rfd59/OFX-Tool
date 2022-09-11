@@ -2,13 +2,13 @@
 
 namespace RFD.OFXTool.Library.Entities.Signon
 {
-    [Element("SONRS", ElementTypeEnum.CLASS)]
+    [Element("SONRS")]
     public class SignonResponse
     {
         public Status? Status { get; set; }
-        [Element("DTSERVER", ElementTypeEnum.PROPERTY)]
+        [Element("DTSERVER")]
         public string? ServerDate { get; set; }
-        [Element("LANGUAGE", ElementTypeEnum.PROPERTY)]
+        [Element("LANGUAGE")]
         public LanguageEnum? Language { get; set; }
 
         // Determines whether the specified object is equal to the current object.

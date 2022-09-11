@@ -2,7 +2,7 @@
 
 namespace RFD.OFXTool.Library.Entities
 {
-    [Element("OFX", ElementTypeEnum.CLASS)]
+    [Element("OFX")]
     public class ResponseDocument
     {
         public SignonResponseMessageSetV1? SignonResponseMessageSetV1 { get; set; }

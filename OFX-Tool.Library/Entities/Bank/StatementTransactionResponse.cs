@@ -2,7 +2,7 @@
 
 namespace RFD.OFXTool.Library.Entities.Bank
 {
-    [Element("STMTTRNRS", ElementTypeEnum.CLASS)]
+    [Element("STMTTRNRS")]
     public class StatementTransactionResponse : AbstractTransactionResponse
     {
         public StatementResponse? StatementResponse { get; set; }

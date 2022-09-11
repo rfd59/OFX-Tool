@@ -2,23 +2,23 @@
 
 namespace RFD.OFXTool.Library.Entities
 {
-    [Element("STATUS", ElementTypeEnum.CLASS)]
+    [Element("STATUS")]
     public class Status
     {
         //
         // Résumé :
         //     Gets or sets the error code.
-        [Element("CODE", ElementTypeEnum.PROPERTY)]
+        [Element("CODE")]
         public string? Code { get; set; }
         //
         // Résumé :
         //     Gets or sets the severity of the error.
-        [Element("SEVERITY", ElementTypeEnum.PROPERTY)]
+        [Element("SEVERITY")]
         public SeverityEnum? Severity { get; set; }
         //
         // Résumé :
         //     Gets or sets the textual explanation from the FI.
-        [Element("MESSAGE", ElementTypeEnum.PROPERTY)]
+        [Element("MESSAGE")]
         public string? Message { get; set; }
 
 
