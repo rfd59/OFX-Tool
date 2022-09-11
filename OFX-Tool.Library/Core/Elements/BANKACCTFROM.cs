@@ -31,8 +31,6 @@ namespace RFD.OFXTool.Library.Core.Elements
                     _load.BranchId = xmlReader.Value;
                 else if (_field == Entity.GetElement<BankAccount>(nameof(BankAccount.AccountId)))
                     _load.AccountId = xmlReader.Value;
-                else if (_field == Entity.GetElement<BankAccount>(nameof(BankAccount.BranchId)))
-                    _load.BranchId = xmlReader.Value;
                 else if (_field == Entity.GetElement<BankAccount>(nameof(BankAccount.AccountType)))
                     _load.AccountType = (AccountEnum)Enum.Parse(typeof(AccountEnum), xmlReader.Value);
                 else if (_field == Entity.GetElement<BankAccount>(nameof(BankAccount.AccountKey)))
