@@ -28,10 +28,7 @@ namespace RFD.OFXTool.Library.Core.Elements
 
         internal T Load(XmlTextReader xmlReader)
         {
-            var obj = Activator.CreateInstance(typeof(T));
-            if (obj == null)
-                throw new NullReferenceException();
-            _load = (T)obj;
+            _load = (T)Activator.CreateInstance(typeof(T));
 
             while (xmlReader.Read())
             {
