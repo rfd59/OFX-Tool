@@ -17,6 +17,12 @@ namespace RFD.OFXTool.Library.Core.Elements
             // SONRS element object
             if (xmlReader.NodeType == XmlNodeType.Element && xmlReader.Name.Equals(Entity.GetElement<SignonResponse>()))
                 _load.SignonResponse = new SONRS().Load(xmlReader);
+
+            if (xmlReader.NodeType == XmlNodeType.Text)
+            {
+                // No field for this element
+                throw new InvalidOperationException($"Unexpected value! [{_field}]");
+            }
         }
     }
 }
