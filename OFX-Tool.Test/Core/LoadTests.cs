@@ -50,5 +50,13 @@ namespace RFD.OFXTool.Library.Core.Tests
             Assert.AreEqual(ofx.Response, load.Ofx.Response);
             Assert.AreEqual(ofx, load.Ofx);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(OFXToolException))]
+        public void LoadTest_UnknownHeader()
+        {
+            var ofxFile = "TestFiles/LoadTest_UnknownHeader.ofx";
+            new Load(ofxFile);
+        }
     }
 }

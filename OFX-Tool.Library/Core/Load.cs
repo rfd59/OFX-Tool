@@ -61,7 +61,7 @@ namespace RFD.OFXTool.Library.Core
                         else if (setting[0] == Entity.GetHeader(nameof(HeaderDocument.NewFileUid)))
                             header.NewFileUid = setting[1];
                         else
-                            throw new InvalidOperationException($"Unexpected header! [{setting[0]}]");
+                            throw new InvalidOperationException($"Unexpected header! [{line}]");
                     }
                 }
             }
