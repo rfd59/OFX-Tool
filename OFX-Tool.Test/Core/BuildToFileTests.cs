@@ -3,6 +3,7 @@ using RFD.OFXTool.Library.Core;
 using RFD.OFXTool.Library.Entities;
 using RFD.OFXTool.Library.Entities.Bank;
 using RFD.OFXTool.Library.Entities.Signon;
+using RFD.OFXTool.Library.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;

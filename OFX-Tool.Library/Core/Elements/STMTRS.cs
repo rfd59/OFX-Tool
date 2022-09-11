@@ -1,5 +1,6 @@
 ﻿using RFD.OFXTool.Library.Entities;
 using RFD.OFXTool.Library.Entities.Bank;
+using RFD.OFXTool.Library.Enums;
 using System.Xml;
 
 namespace RFD.OFXTool.Library.Core.Elements

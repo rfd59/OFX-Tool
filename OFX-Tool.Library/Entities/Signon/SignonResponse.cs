@@ -1,4 +1,5 @@
 ﻿using RFD.OFXTool.Library.Attributes;
+using RFD.OFXTool.Library.Enums;
 
 namespace RFD.OFXTool.Library.Entities.Signon
 {

@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using RFD.OFXTool.Library.Enums;
 using System;
 
 namespace RFD.OFXTool.Library.Entities.Bank.Tests

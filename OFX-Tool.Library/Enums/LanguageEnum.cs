@@ -1,4 +1,4 @@
-﻿namespace RFD.OFXTool.Library.Entities
+﻿namespace RFD.OFXTool.Library.Enums
 {
     public enum LanguageEnum
     {
