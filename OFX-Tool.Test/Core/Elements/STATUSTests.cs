@@ -23,7 +23,7 @@ namespace RFD.OFXTool.Library.Core.Elements.Tests
         public void BuildTest_Full()
         {
             var doc = new Status() { Code = "2", Message = "My Message", Severity = SeverityEnum.ERROR };
-            var expected = $"<STATUS><CODE>{doc.Code}<MESSAGE>{doc.Message}<SEVERITY>{doc.Severity}</STATUS>";
+            var expected = $"<STATUS><CODE>{doc.Code}<SEVERITY>{doc.Severity}<MESSAGE>{doc.Message}</STATUS>";
 
             BuildAssert(doc, expected);
         }

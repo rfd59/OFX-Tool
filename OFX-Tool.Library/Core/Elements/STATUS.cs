@@ -10,10 +10,10 @@ namespace RFD.OFXTool.Library.Core.Elements
         {
             if (doc.Code != null)
                 _build.AppendLine(WriteProperty<Status>(nameof(Status.Code), doc.Code, _level));
-            if (doc.Message != null)
-                _build.AppendLine(WriteProperty<Status>(nameof(Status.Message), doc.Message, _level));
             if (doc.Severity != null)
                 _build.AppendLine(WriteProperty<Status>(nameof(Status.Severity), doc.Severity, _level));
+            if (doc.Message != null)
+                _build.AppendLine(WriteProperty<Status>(nameof(Status.Message), doc.Message, _level));
         }
 
         protected override void LoadElement(XmlTextReader xmlReader)

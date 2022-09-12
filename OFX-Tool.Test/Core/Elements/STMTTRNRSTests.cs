@@ -23,7 +23,7 @@ namespace RFD.OFXTool.Library.Core.Elements.Tests
         public void BuildTest_Full()
         {
             var doc = new StatementTransactionResponse() { TransactionUniqueId = "789654123", ClientCookie = "azertyuiop", StatementResponse = new StatementResponse(), Status = new Status() };
-            var expected = $"<STMTTRNRS><TRNUID>{doc.TransactionUniqueId}<CLTCOOKIE>{doc.ClientCookie}<STATUS></STATUS><STMTRS></STMTRS></STMTTRNRS>";
+            var expected = $"<STMTTRNRS><TRNUID>{doc.TransactionUniqueId}<STATUS></STATUS><CLTCOOKIE>{doc.ClientCookie}<STMTRS></STMTRS></STMTTRNRS>";
 
             BuildAssert(doc, expected);
         }

@@ -10,34 +10,34 @@ namespace RFD.OFXTool.Library.Core.Elements
         {
             if (doc.TransactionType != null)
                 _build.AppendLine(WriteProperty<StatementTransaction>(nameof(StatementTransaction.TransactionType), doc.TransactionType, _level));
-            if (doc.UserDate != null)
-                _build.AppendLine(WriteProperty<StatementTransaction>(nameof(StatementTransaction.UserDate), doc.UserDate, _level));
             if (doc.PostedDate != null)
                 _build.AppendLine(WriteProperty<StatementTransaction>(nameof(StatementTransaction.PostedDate), doc.PostedDate, _level));
+            if (doc.UserDate != null)
+                _build.AppendLine(WriteProperty<StatementTransaction>(nameof(StatementTransaction.UserDate), doc.UserDate, _level));
+            if (doc.AvailableDate != null)
+                _build.AppendLine(WriteProperty<StatementTransaction>(nameof(StatementTransaction.AvailableDate), doc.AvailableDate, _level));
             if (doc.TransactionAmount != null)
                 _build.AppendLine(WriteProperty<StatementTransaction>(nameof(StatementTransaction.TransactionAmount), doc.TransactionAmount, _level));
             if (doc.FinancialInstitutionTransactionId != null)
                 _build.AppendLine(WriteProperty<StatementTransaction>(nameof(StatementTransaction.FinancialInstitutionTransactionId), doc.FinancialInstitutionTransactionId, _level));
-            if (doc.CheckNumber != null)
-                _build.AppendLine(WriteProperty<StatementTransaction>(nameof(StatementTransaction.CheckNumber), doc.CheckNumber, _level));
-            if (doc.Memo != null)
-                _build.AppendLine(WriteProperty<StatementTransaction>(nameof(StatementTransaction.Memo), doc.Memo, _level));
-            if (doc.Name != null)
-                _build.AppendLine(WriteProperty<StatementTransaction>(nameof(StatementTransaction.Name), doc.Name, _level));
-            if (doc.PayeeId != null)
-                _build.AppendLine(WriteProperty<StatementTransaction>(nameof(StatementTransaction.PayeeId), doc.PayeeId, _level));
-            if (doc.StandardIndustrialCode != null)
-                _build.AppendLine(WriteProperty<StatementTransaction>(nameof(StatementTransaction.StandardIndustrialCode), doc.StandardIndustrialCode, _level));
-            if (doc.ExtendedName != null)
-                _build.AppendLine(WriteProperty<StatementTransaction>(nameof(StatementTransaction.ExtendedName), doc.ExtendedName, _level));
-            if (doc.ReferenceNumber != null)
-                _build.AppendLine(WriteProperty<StatementTransaction>(nameof(StatementTransaction.ReferenceNumber), doc.ReferenceNumber, _level));
-            if (doc.ServerTransactionId != null)
-                _build.AppendLine(WriteProperty<StatementTransaction>(nameof(StatementTransaction.ServerTransactionId), doc.ServerTransactionId, _level));
             if (doc.CorrectFinancialInstitutionTransactionId != null)
                 _build.AppendLine(WriteProperty<StatementTransaction>(nameof(StatementTransaction.CorrectFinancialInstitutionTransactionId), doc.CorrectFinancialInstitutionTransactionId, _level));
-            if (doc.AvailableDate != null)
-                _build.AppendLine(WriteProperty<StatementTransaction>(nameof(StatementTransaction.AvailableDate), doc.AvailableDate, _level));
+            if (doc.ServerTransactionId != null)
+                _build.AppendLine(WriteProperty<StatementTransaction>(nameof(StatementTransaction.ServerTransactionId), doc.ServerTransactionId, _level));
+            if (doc.CheckNumber != null)
+                _build.AppendLine(WriteProperty<StatementTransaction>(nameof(StatementTransaction.CheckNumber), doc.CheckNumber, _level));
+            if (doc.ReferenceNumber != null)
+                _build.AppendLine(WriteProperty<StatementTransaction>(nameof(StatementTransaction.ReferenceNumber), doc.ReferenceNumber, _level));
+            if (doc.StandardIndustrialCode != null)
+                _build.AppendLine(WriteProperty<StatementTransaction>(nameof(StatementTransaction.StandardIndustrialCode), doc.StandardIndustrialCode, _level));
+            if (doc.PayeeId != null)
+                _build.AppendLine(WriteProperty<StatementTransaction>(nameof(StatementTransaction.PayeeId), doc.PayeeId, _level));
+            if (doc.Name != null)
+                _build.AppendLine(WriteProperty<StatementTransaction>(nameof(StatementTransaction.Name), doc.Name, _level));
+            if (doc.ExtendedName != null)
+                _build.AppendLine(WriteProperty<StatementTransaction>(nameof(StatementTransaction.ExtendedName), doc.ExtendedName, _level));
+            if (doc.Memo != null)
+                _build.AppendLine(WriteProperty<StatementTransaction>(nameof(StatementTransaction.Memo), doc.Memo, _level));
         }
 
         protected override void LoadElement(XmlTextReader xmlReader)
