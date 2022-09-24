@@ -1,11 +1,11 @@
 ﻿namespace RFD.OFXTool.Library.Attributes
 {
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Class, Inherited = true, AllowMultiple = false)]
-    public class Element : Attribute
+    internal class Element : Attribute
     {
-        public string Name { get; }
+        internal string Name { get; }
 
-        public Element(string name)
+        internal Element(string name)
         {
             Name = name;
         }
