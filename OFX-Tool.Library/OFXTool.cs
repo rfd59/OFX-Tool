@@ -5,30 +5,37 @@ namespace RFD.OFXTool.Library
 {
     public class OfxTool : IOfxTool
     {
-        public void Build(Ofx ofx, string ofxTargetFile)
+        public Ofx? Ofx { get; set; }
+
+        public OfxTool() { }
+
+        public OfxTool(string ofxSourceFile) {
+            Load(ofxSourceFile);
+        }
+
+        public void Load(string ofxSourceFile)
         {
-            if (ofx != null)
-                new Build(ofx, ofxTargetFile);
+            if (File.Exists(ofxSourceFile))
+                Ofx =  new Load(ofxSourceFile).Ofx;
+            else
+                throw new OFXToolException($"The OFX file '{ofxSourceFile}' doesn't exist!");
+        }
+        public void Build(string ofxTargetFile)
+        {
+            if (Ofx != null)
+                new Build(Ofx, ofxTargetFile);
             else
                 throw new OFXToolException($"The OFX object is null!");
         }
 
-        public Ofx Load(string ofxSourceFile)
+        public static Ofx? Get(string ofxSourceFile)
         {
-            if (File.Exists(ofxSourceFile))
-                return new Load(ofxSourceFile).Ofx;
-            else
-                throw new OFXToolException($"The OFX file '{ofxSourceFile}' doesn't exist!");
-        }
-
-        public static Ofx Get(string ofxSourceFile)
-        {
-            return new OfxTool().Load(ofxSourceFile);
+            return new OfxTool(ofxSourceFile).Ofx;
         }
 
         public static void Set(Ofx ofx, string ofxTargetFile)
         {
-            new OfxTool().Build(ofx, ofxTargetFile);
+            new OfxTool() { Ofx=ofx}.Build(ofxTargetFile);
         }
 
     }
