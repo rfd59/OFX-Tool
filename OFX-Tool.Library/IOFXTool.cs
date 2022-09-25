@@ -4,8 +4,8 @@ namespace RFD.OFXTool.Library
 {
     public interface IOfxTool
     {
-        public Ofx Load(string ofxSourceFile);
+        public void Load(string ofxSourceFile);
 
-        public void Build(Ofx ofx, string ofxTargetFile);
+        public void Build(string ofxTargetFile);
     }
 }

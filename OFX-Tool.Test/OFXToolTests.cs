@@ -11,12 +11,20 @@ namespace RFD.OFXTool.Library.Tests
         [TestMethod()]
         public void LoadTest()
         {
+#pragma warning disable CS8602 // Déréférencement d'une éventuelle référence null.
             var document = OfxTool.Get("TestFiles/ExportToXmlTest1.ofx").Response;
             Assert.IsNotNull(document);
-#pragma warning disable CS8602 // Déréférencement d'une éventuelle référence null.
             Assert.AreEqual("20220802000000", document.SignonResponseMessageSetV1.SignonResponse.ServerDate);
             Assert.AreEqual("450.00", document.BankResponseMessageSetV1.StatementTransactionResponses[0].StatementResponse.BankTransactionList.StatementTransactions[0].TransactionAmount);
 #pragma warning restore CS8602 // Déréférencement d'une éventuelle référence null.
+        }
+
+        [TestMethod()]
+        public void LoadTest_ConstructorWithOfxFile()
+        {
+            var ofxTool = new OfxTool("TestFiles/ExportToXmlTest1.ofx");
+            Assert.IsNotNull(ofxTool.Ofx);
+            Assert.AreEqual("102", ofxTool.Ofx.Header.Version);
         }
 
         [TestMethod()]
@@ -41,8 +49,8 @@ namespace RFD.OFXTool.Library.Tests
         [ExpectedException(typeof(OFXToolException))]
         public void BuildTest_OfxNull()
         {
-            var ofxTool = new OfxTool();
-            ofxTool.Build(null, "ofxTargetFile");
+            var ofxTool = new OfxTool() { Ofx = null};
+            ofxTool.Build("ofxTargetFile");
         }
     }
 }

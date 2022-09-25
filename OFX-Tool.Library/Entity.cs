@@ -4,9 +4,9 @@ using System.Reflection;
 
 namespace RFD.OFXTool.Library
 {
-    public static class Entity
+    internal static class Entity
     {
-        public static bool PropertyEquality(Object? obj1, Object? obj2)
+        internal static bool PropertyEquality(Object? obj1, Object? obj2)
         {
             if (obj1 == null)
             {
@@ -27,17 +27,17 @@ namespace RFD.OFXTool.Library
             }
         }
 
-        public static string GetHeader(string property)
+        internal static string GetHeader(string property)
         {
             return ((Header)GetAttribute<Header, HeaderDocument>(property)).Name;
         }
 
-        public static string GetElement<T>(string property)
+        internal static string GetElement<T>(string property)
         {
             return ((Element)GetAttribute<Element, T>(property)).Name;
         }
 
-        public static string GetElement<T>()
+        internal static string GetElement<T>()
         {
             return ((Element)Attribute.GetCustomAttribute(typeof(T), typeof(Element), true)).Name;
         }

@@ -1,6 +1,11 @@
 name: CICD
 
-on: [push]
+on:
+  # Triggers the workflow on push or pull request events but only for the "master" branch
+  push:
+    branches: [ "**" ]
+  pull_request:
+    branches: [ "master" ]
 
 env:
   projectName: OFX-Tool
@@ -32,6 +37,15 @@ jobs:
         uses: gittools/actions/gitversion/setup@v0.9.7
         with:
             versionSpec: '5.x'
+
+      - name: Initialize GitVersion
+        run: |
+          if [ "${GITHUB_EVENT_NAME}" == "pull_request" ]; then
+            if [ $(echo ${GITHUB_HEAD_REF} | grep -c '^release/') -eq 1 ]; then
+              RELEASE_VERSION=$(echo ${GITHUB_HEAD_REF} | cut -d'/' -f2)
+              echo -e "\nnext-version: ${RELEASE_VERSION}" >> ./GitVersion.yml
+            fi
+          fi
 
       - name: Determine Version
         id:   gitversion
