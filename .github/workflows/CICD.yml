@@ -1,6 +1,11 @@
 name: CICD
 
-on: [push]
+on:
+  # Triggers the workflow on push or pull request events but only for the "master" branch
+  push:
+    branches: [ "**" ]
+  pull_request:
+    branches: [ "master" ]
 
 env:
   projectName: OFX-Tool
