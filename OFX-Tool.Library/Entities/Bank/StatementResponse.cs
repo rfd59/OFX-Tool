@@ -1,7 +1,12 @@
-﻿namespace RFD.OFXTool.Library.Entities.Bank
+﻿using RFD.OFXTool.Library.Attributes;
+using RFD.OFXTool.Library.Enums;
+
+namespace RFD.OFXTool.Library.Entities.Bank
 {
+    [Element("STMTRS")]
     public class StatementResponse
     {
+        [Element("CURDEF")]
         public CurrencyEnum? Currency { get; set; }
         public BankAccount? BankAccountFrom { get; set; }
         public BankTransactionList? BankTransactionList { get; set; }

@@ -30,7 +30,10 @@
     <None Update="Ofx.xsd">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestFiles\LoadFromXmlTest1.xml">
+    <None Update="TestFiles\LoadTest_UnknownHeader.ofx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestFiles\LoadTest1.ofx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="TestFiles\ExportToXmlTest2.ofx">

@@ -1,4 +1,36 @@
-mode: Mainline
+assembly-versioning-scheme: MajorMinorPatch
 branches:
+  develop:
+    regex: dev(elop)?(ment)?$
+    mode: ContinuousDeployment
+    tag: alpha
+    increment: Minor
+    prevent-increment-of-merged-branch-version: false
+    track-merge-target: true
+    tracks-release-branches: true
+    is-release-branch: false
+  release:
+    regex: release?[/-]
+    mode: ContinuousDeployment
+    tag: beta
+    increment: Inherit
+    prevent-increment-of-merged-branch-version: true
+    track-merge-target: false
+    tracks-release-branches: false
+    is-release-branch: true
+  feature:
+    regex: feature?[/-]
+    mode: ContinuousDeployment
+    tag: useBranchName
+    increment: Inherit
+    prevent-increment-of-merged-branch-version: true
+    track-merge-target: false
+    tracks-release-branches: false
+    is-release-branch: false
   pull-request:
     tag: rc
+    regex: (origin/)?(pull|pull\-requests|pr)[/-]
+  hotfix:
+    regex: (origin/)?hotfix(es)?[/-]
+  support:
+    regex: (origin/)?support[/-]

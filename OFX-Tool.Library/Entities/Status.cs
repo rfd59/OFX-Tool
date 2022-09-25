@@ -1,18 +1,25 @@
-﻿namespace RFD.OFXTool.Library.Entities
+﻿using RFD.OFXTool.Library.Attributes;
+using RFD.OFXTool.Library.Enums;
+
+namespace RFD.OFXTool.Library.Entities
 {
+    [Element("STATUS")]
     public class Status
     {
         //
         // Résumé :
         //     Gets or sets the error code.
+        [Element("CODE")]
         public string? Code { get; set; }
         //
         // Résumé :
         //     Gets or sets the severity of the error.
+        [Element("SEVERITY")]
         public SeverityEnum? Severity { get; set; }
         //
         // Résumé :
         //     Gets or sets the textual explanation from the FI.
+        [Element("MESSAGE")]
         public string? Message { get; set; }
 
 

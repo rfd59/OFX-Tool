@@ -1,36 +1,55 @@
-﻿namespace RFD.OFXTool.Library.Entities.Bank
+﻿using RFD.OFXTool.Library.Attributes;
+using RFD.OFXTool.Library.Enums;
+
+namespace RFD.OFXTool.Library.Entities.Bank
 {
+    [Element("STMTTRN")]
     public class StatementTransaction
     {
         // Gets or sets the transaction type.
+        [Element("TRNTYPE")]
         public TransactionEnum? TransactionType { get; set; }
         // Gets or sets the date user initiated transaction, if known.
+        [Element("DTUSER")]
         public string? UserDate { get; set; }
         // Gets or sets the date transaction was posted to account.
+        [Element("DTPOSTED")]
         public string? PostedDate { get; set; }
         // Gets or sets the amount of transaction.
+        [Element("TRNAMT")]
         public string? TransactionAmount { get; set; }
         // Gets or sets the transaction ID issued by financial institution.
+        [Element("FITID")]
         public string? FinancialInstitutionTransactionId { get; set; }
         // Gets or sets the check number.
+        [Element("CHECKNUM")]
         public string? CheckNumber { get; set; }
         // Gets or sets the extra information.
+        [Element("MEMO")]
         public string? Memo { get; set; }
         // Gets or sets the name of payee or description of transaction.
+        [Element("NAME")]
         public string? Name { get; set; }
         // Gets or sets the payee identifier if available.
+        [Element("PAYEEID")]
         public string? PayeeId { get; set; }
         // Gets or sets the Standard Industrial Code.
+        [Element("SIC")]
         public string? StandardIndustrialCode { get; set; }
         // Gets or sets the extended name of payee or description of transaction.
+        [Element("EXTDNAME")]
         public string? ExtendedName { get; set; }
         // Gets or sets the reference number that uniquely identifies the transaction.
+        [Element("REFNUM")]
         public string? ReferenceNumber { get; set; }
         // Gets or sets the server assigned transaction ID.
+        [Element("SRVRTID")]
         public string? ServerTransactionId { get; set; }
         // Gets or sets the corrected transaction ID. If present, the FinancialInstitutionTransactionId of a previously sent transaction that is corrected by this record.
+        [Element("CORRECTFITID")]
         public string? CorrectFinancialInstitutionTransactionId { get; set; }
         // Gets or sets the date funds are available (value date).
+        [Element("DTAVAIL")]
         public string? AvailableDate { get; set; }
 
         // Determines whether the specified object is equal to the current object.
