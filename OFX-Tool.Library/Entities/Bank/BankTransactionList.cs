@@ -1,14 +1,19 @@
-﻿namespace RFD.OFXTool.Library.Entities.Bank
+﻿using RFD.OFXTool.Library.Attributes;
+
+namespace RFD.OFXTool.Library.Entities.Bank
 {
+    [Element("BANKTRANLIST")]
     public class BankTransactionList
     {
         //
         // Résumé :
         //     Gets or sets the start date for transaction data.
+        [Element("DTSTART")]
         public string? StartDate { get; set; }
         //
         // Résumé :
         //     Gets or sets the end date for transaction data.
+        [Element("DTEND")]
         public string? EndDate { get; set; }
         //
         // Résumé :

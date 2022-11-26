@@ -1,5 +1,8 @@
-﻿namespace RFD.OFXTool.Library.Entities.Bank
+﻿using RFD.OFXTool.Library.Attributes;
+
+namespace RFD.OFXTool.Library.Entities.Bank
 {
+    [Element("STMTTRNRS")]
     public class StatementTransactionResponse : AbstractTransactionResponse
     {
         public StatementResponse? StatementResponse { get; set; }

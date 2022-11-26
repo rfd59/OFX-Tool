@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>RFD.OFXTool.Sample</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <PackageId>RFD.$(AssemblyName)</PackageId>
+    <Authors>rfavreau,rfd59</Authors>
+    <Company>RFD</Company>
+    <Description>This project provides a sample to use to the OFX-Tool library.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OFX-Tool.Library\OFX-Tool.Library.csproj" />
+  </ItemGroup>
+
+</Project>
