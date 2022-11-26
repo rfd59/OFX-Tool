@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.0] (2022-11-26)
 #### Added
 -   Build an _OFX_ file
+-   Add sample project
 
 ## [0.1.2] (2022-09-04)
 #### Added
