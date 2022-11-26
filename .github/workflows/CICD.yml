@@ -110,7 +110,7 @@ jobs:
           key: ${{ github.sha }}
 
       - name: Pack
-        run: dotnet pack -c Release --no-build -o . /p:PackageID=${{ env.orgaName }}.${{ env.projectName }} /p:Version=${{ needs.CI.outputs.semVer }}
+        run: cd OFX-Tool.Library && dotnet pack -c Release --no-build -o . /p:PackageID=${{ env.orgaName }}.${{ env.projectName }} /p:Version=${{ needs.CI.outputs.semVer }}
       
       - name: Push to NuGet
         run: dotnet nuget push *.nupkg --skip-duplicate -s https://api.nuget.org/v3/index.json -k ${{ secrets.NUGET }}
