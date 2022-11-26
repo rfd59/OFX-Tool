@@ -109,6 +109,9 @@ jobs:
           path: ./*
           key: ${{ github.sha }}
 
+      - name: Fix
+        run:  ls -al /home/runner/work/OFX-Tool/OFX-Tool/RFD.OFX-Tool.*.nupkg && rm -f /home/runner/work/OFX-Tool/OFX-Tool/RFD.OFX-Tool.*.nupkg
+
       - name: Pack
         run: dotnet pack -c Release --no-build -o . /p:PackageID=${{ env.orgaName }}.${{ env.projectName }} /p:Version=${{ needs.CI.outputs.semVer }}
       
