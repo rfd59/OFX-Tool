@@ -113,7 +113,7 @@ jobs:
         run: cd OFX-Tool.Library && dotnet pack -c Release --no-build -o . /p:PackageID=${{ env.orgaName }}.${{ env.projectName }} /p:Version=${{ needs.CI.outputs.semVer }}
       
       - name: Push to NuGet
-        run: dotnet nuget push *.nupkg --skip-duplicate -s https://api.nuget.org/v3/index.json -k ${{ secrets.NUGET }}
+        run: cd OFX-Tool.Library && dotnet nuget push *.nupkg --skip-duplicate -s https://api.nuget.org/v3/index.json -k ${{ secrets.NUGET }}
 
       - name: Build Release
         id: build_release
